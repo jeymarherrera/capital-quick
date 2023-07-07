@@ -33,7 +33,7 @@
                     </div>
                     <div class="widget-content">
                         <h5 style="color:red;">Año Anterior</h5>
-                        <a href="javascript:;" class="btn btn-secondary">Ver Detalles</a>
+                        <a href="/estado_detalles" class="btn btn-secondary">Ver Detalles</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="widget-content">
                         <h5>Año Actual</h5>
-                        <a href="javascript:;" class="btn btn-secondary">Ver Detalles</a>
+                        <a href="/estado_detalles" class="btn btn-secondary">Ver Detalles</a>
                     </div>
                 </div>
             </div>

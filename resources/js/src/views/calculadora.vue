@@ -81,13 +81,13 @@
                 </div>
 
                 <div class="invoice-action-discount">
-                  <h5>Monto Total</h5>
+                  <h5>Monto Inicial</h5>
 
                   <div class="invoice-action-discount-fields">
                     <div class="row">
                       <div class="col-12">
                         <div class="form-group mb-0">
-                          <label for="type">Monto total del proyecto que desea financiar</label>
+                          <label for="type">Monto incial del proyecto que desea financiar</label>
                           <div
                             class="dropdown selectable-dropdown invoice-tax-select d-block btn-group"
                           >
@@ -180,6 +180,57 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="invoice-action-tax">
+                  <h5>Capitalización</h5>
+                  <div class="invoice-action-tax-fields">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group mb-0">
+                          <label for="type">Frecuencia</label>
+                          <div
+                            class="dropdown selectable-dropdown invoice-tax-select d-block btn-group"
+                          >
+                            <a
+                              href="javascript:;"
+                              id="ddlTax"
+                              class="btn dropdown-toggle btn-icon-only text-nowrap"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              <span class="selectable-text">{{ selected_tax_frec.key }}</span>
+                              <span class="selectable-arrow">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  class="feather feather-chevron-down"
+                                >
+                                  <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                              </span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="ddlTax">
+                              <li v-for="(item, index) in tax_frec_list" :key="index">
+                                <a
+                                  href="javascript:;"
+                                  class="dropdown-item"
+                                  @click="selected_tax_frec = item"
+                                >{{ item.key }}</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <!-- boton -->
                 <div class="invoice-actions-btn">
                   <div class="invoice-action-btn">
@@ -211,24 +262,9 @@
                         <div class="inv--detail-section inv--customer-detail-section">
                           <div class="row">
                             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4 align-self-center">
-                              <p class="inv-to">Invoice To</p>
-                            </div>
-
-                            <div
-                              class="col-xl-4 col-lg-5 col-md-6 col-sm-8 align-self-center order-sm-0 order-1 inv--payment-info"
-                            ></div>
-
-                            <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4">
-                              <p class="inv-customer-name">Jesse Cory</p>
-                              <p class="inv-street-addr">405 Mulberry Rd. Mc Grady, NC, 28649</p>
-                              <p class="inv-email-address">redq@company.com</p>
-                              <p class="inv-email-address">(128) 666 070</p>
-                            </div>
-
-                            <div
-                              class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12 order-sm-0 order-1"
-                            >
-                              <div class="inv--payment-info"></div>
+                              <p
+                                class="inv-to"
+                              >Para esta inversión usted deberá pagar lo siguente:</p>
                             </div>
                           </div>
                         </div>
@@ -248,8 +284,7 @@
                               <tbody>
                                 <tr v-for="item in items" :key="item.id">
                                   <td>{{ item.id }}</td>
-                                  <td>{{ item.title }}</td>
-                                  <td>{{ item.quantity }}</td>
+                                  <td>${{ item.quantity }}</td>
                                   <td class="text-end">${{ item.price }}</td>
                                   <td class="text-end">${{ item.amount }}</td>
                                 </tr>
@@ -271,25 +306,16 @@
                                     <p class>$3155</p>
                                   </div>
                                   <div class="col-sm-8 col-7">
-                                    <p class>Tax Amount:</p>
+                                    <p class>Interés:</p>
                                   </div>
                                   <div class="col-sm-4 col-5">
                                     <p class>$700</p>
-                                  </div>
-                                  <div class="col-sm-8 col-7">
-                                    <p class="discount-rate">
-                                      Discount :
-                                      <span class="discount-percentage">5%</span>
-                                    </p>
-                                  </div>
-                                  <div class="col-sm-4 col-5">
-                                    <p class>$10</p>
-                                  </div>
+                                  </div>                              
                                   <div class="col-sm-8 col-7 grand-total-title">
-                                    <h4 class>Grand Total :</h4>
+                                    <h4 class>Total a Pagar :</h4>
                                   </div>
                                   <div class="col-sm-4 col-5 grand-total-amount">
-                                    <h4 class>$3845</h4>
+                                    <h4 class>$3855</h4>
                                   </div>
                                 </div>
                               </div>
@@ -301,9 +327,7 @@
                           <div class="invoice-action-btn">
                             <div class="row">
                               <div class="col-xl-12 col-md-4">
-                                <a 
-                                  class="btn btn-dark btn-preview"
-                                >Anexar a mi Estado Financiero</a>
+                                <a class="btn btn-dark btn-preview">Anexar a mi Estado Financiero</a>
                               </div>
                             </div>
                           </div>
@@ -342,6 +366,9 @@ const selected_currency = ref({
 const tax_type_list = ref([]);
 const selected_tax_type = ref({ key: "Anual", value: 1 });
 
+const tax_frec_list = ref([]);
+const selected_tax_frec = ref({ key: "Anualmente", value: 1 });
+
 onMounted(() => {
   //currency list
   currency_list.value = [
@@ -358,10 +385,56 @@ onMounted(() => {
   //tax type list
   tax_type_list.value = [
     { key: "Anual", value: 1 },
-    { key: "Mensual", value: 12 },
-    { key: "Diaria", value: 30 }
+    { key: "Mensual", value: 12 }
   ];
+
+  //tax type list
+  tax_frec_list.value = [
+    { key: "Anualmente", value: 1 },
+    { key: "Semestralmente", value: 2 },
+    { key: "Trimestralmente", value: 4 },
+    { key: "Mensualmente", value: 12 },
+    { key: "Diariamente", value: 30 }
+  ];
+
+  bind_data();
 });
 
 
+const columns = ref([]);
+
+const bind_data = () => {
+  columns.value = [
+    { key: "id", label: "Mes" },
+    { key: "quantity", label: "Monto" },
+    { key: "price", label: "Interes", class: "text-end" },
+    { key: "amount", label: "Total", class: "text-end" }
+  ];
+  items.value = [
+    {
+      id: 1,
+      quantity: 100,
+      price: "120",
+      amount: "120"
+    },
+    {
+      id: 2,
+      quantity: 100,
+      price: "230",
+      amount: "230"
+    },
+    {
+      id: 3,
+      quantity: 100,
+      price: "405",
+      amount: "405"
+    },
+    {
+      id: 4,
+      quantity: 100,
+      price: "2500",
+      amount: "2500"
+    }
+  ];
+};
 </script>
