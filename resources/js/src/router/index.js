@@ -22,6 +22,28 @@ const routes = [
         name: 'calculadora',
         component: () => import(/* webpackChunkName: "apps-invoice-add" */ '../views/calculadora.vue'),
     },
+    {
+        path: '/balance',
+        name: 'balance',
+        component: () => import(/* webpackChunkName: "index2" */ '../views/balance.vue'),
+    },
+    {
+        path: '/balance_detalles',
+        name: 'Detalles Balance',
+        component: () => import(/* webpackChunkName: "index2" */ '../views/balance_detalles.vue'),
+    },
+    {
+        path: '/estado',
+        name: 'estado',
+        component: () => import(/* webpackChunkName: "index2" */ '../views/estado.vue'),
+    },
+    {
+        path: '/estado_detalles',
+        name: 'Detalles Estado',
+        component: () => import(/* webpackChunkName: "index2" */ '../views/estado_detalles.vue'),
+    },
+
+   
 
     //components
     {

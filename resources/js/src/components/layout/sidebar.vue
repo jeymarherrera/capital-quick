@@ -67,13 +67,7 @@
         </li>
 
         <li class="menu">
-          <a
-            class="dropdown-toggle"
-            data-bs-toggle="collapse"
-            data-bs-target="#balance"
-            aria-controls="balance"
-            aria-expanded="false"
-          >
+          <router-link to="/balance" class="dropdown-toggle" @click="toggleMobileMenu">
             <div class>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,42 +90,11 @@
               </svg>
               <span>{{ $t('B. General') }}</span>
             </div>
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-chevron-right"
-              >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
-          </a>
-
-          <ul id="balance" class="collapse submenu list-unstyled" data-bs-parent="#sidebar">
-            <li>
-              <router-link to="/login" @click="toggleMobileMenu">{{ $t('Registrar') }}</router-link>
-            </li>
-            <li>
-              <router-link to="/index2" @click="toggleMobileMenu">{{ $t('Visualizar') }}</router-link>
-            </li>
-          </ul>
+          </router-link>
         </li>
 
         <li class="menu">
-          <a
-            class="dropdown-toggle"
-            data-bs-toggle="collapse"
-            data-bs-target="#estado"
-            aria-controls="estado"
-            aria-expanded="false"
-          >
+          <router-link to="/estado" class="dropdown-toggle" @click="toggleMobileMenu">
             <div class>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -154,32 +117,7 @@
               </svg>
               <span>{{ $t('E. Resultado') }}</span>
             </div>
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-chevron-right"
-              >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
-          </a>
-
-          <ul id="estado" class="collapse submenu list-unstyled" data-bs-parent="#sidebar">
-            <li>
-              <router-link to="/login" @click="toggleMobileMenu">{{ $t('Registrar') }}</router-link>
-            </li>
-            <li>
-              <router-link to="/index2" @click="toggleMobileMenu">{{ $t('Visualizar') }}</router-link>
-            </li>
-          </ul>
+          </router-link>
         </li>
 
         <li class="menu">
@@ -322,7 +260,7 @@
           </router-link>
         </li>
 
-         <li class="menu">
+        <li class="menu">
           <router-link to="/dragndrop" class="dropdown-toggle" @click="toggleMobileMenu">
             <div class>
               <svg
@@ -1037,7 +975,7 @@
           </ul>
         </li>
 
-       <!-- opciones de mas -->
+        <!-- opciones de mas -->
 
         <li class="menu" @click="toggleMobileMenu">
           <a
