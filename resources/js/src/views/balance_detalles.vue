@@ -25,20 +25,27 @@
                                     <div id="ct" class="">
                                         <div class="invoice-00001">
                                             <div class="content-section">
-                                                <!-- aqui -->
-                                                <div class="inv--head-section inv--detail-section">
+                                               <div class="inv--head-section inv--detail-section">
                                                     <div class="row">
                                                         <div class="col-sm-6 col-12 me-auto">
-                                                            <div class="d-flex" >
+                                                            <div class="d-flex">
                                                                 <img class="company-logo" src="@/assets/images/cork-logo.png" alt="company" />
-                                                                <h3 class="in-heading align-self-center">DFKJLKFJDSLKF</h3>
+                                                                <h3 class="in-heading align-self-center">Salsas Camille</h3>
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-sm-6 align-self-center mt-3" >
-                                                            <p class="inv-street-addr">Estado de Situación Financiera</p>
-                                                            <p class="inv-email-address">SLKADJKLASJDLKASJ</p>
-                                                            <!-- <p class="inv-email-address">(120) 456 789</p> -->
+                                                        <div class="col-sm-6 text-sm-end">
+                                                            <p class="inv-list-number"><span class="inv-title"> </span> <span class="inv-number"> </span></p>
+                                                        </div>
+
+                                                        <div class="col-sm-6 align-self-center mt-3">
+                                                            <p class="inv-street-addr">Ciudad de Panamá, Condado del Rey, Edificio Country Plaza II. </p>
+                                                            <p class="inv-email-address">salsascamille@company.com</p>
+                                                            <p class="inv-email-address">(+507) 456 789</p>
+                                                        </div>
+                                                        <div class="col-sm-6 align-self-center mt-3 text-sm-end">
+                                                            <p class="inv-created-date"><span class="inv-title">Desde : </span> <span class="inv-date">31 de Diciembre 2021</span></p>
+                                                            <p class="inv-due-date"><span class="inv-title">Hasta : </span> <span class="inv-date">30 de Diciembre de 2022 </span></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -50,7 +57,7 @@
                                                         </div>
 
                                                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 align-self-center order-sm-0 order-1 inv--payment-info">
-                                                            <h6 class="inv-title">Payment Info:</h6>
+                                                            <h6 class="inv-title"> </h6>
                                                         </div>
 
                                                         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4">
@@ -63,10 +70,11 @@
 
                                                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12 order-sm-0 order-1">
                                                             <div class="inv--payment-info">
-                                                                <p><span class="inv-subtitle">Bank Name:</span> <span>Bank of America</span></p>
-                                                                <p><span class="inv-subtitle"> </span> <span> </span></p>
-                                                                <p><span class="inv-subtitle">SWIFT code:</span> <span>VS70134</span></p>
-                                                                <p><span class="inv-subtitle">Country: </span> <span>United States</span></p>
+                                                                <p><span class="inv-subtitle"> </span> <br><br> <span> </span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>000000.00</span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>000000.00</span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>000000.00</span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>0000000.00</span></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -79,7 +87,7 @@
                                                         </div>
 
                                                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 align-self-center order-sm-0 order-1 inv--payment-info">
-                                                            <h6 class="inv-title">Payment Info:</h6>
+                                                            <h6 class="inv-title"> </h6>
                                                         </div>
 
                                                         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4">
@@ -92,10 +100,11 @@
 
                                                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12 order-sm-0 order-1">
                                                             <div class="inv--payment-info">
-                                                                <p><span class="inv-subtitle">Bank Name:</span> <span>Bank of America</span></p>
-                                                                <p><span class="inv-subtitle">Account Number: </span> <span>1234567890</span></p>
-                                                                <p><span class="inv-subtitle">SWIFT code:</span> <span>VS70134</span></p>
-                                                                <p><span class="inv-subtitle">Country: </span> <span>United States</span></p>
+                                                                <p><span class="inv-subtitle"> </span> <br><br> <span> </span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>000000.00</span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>000000.00</span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>000000.00</span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>0000000.00</span></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -108,7 +117,7 @@
                                                         </div>
 
                                                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 align-self-center order-sm-0 order-1 inv--payment-info">
-                                                            <h6 class="inv-title">Payment Info:</h6>
+                                                            <h6 class="inv-title"> </h6>
                                                         </div>
 
                                                         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4">
@@ -118,10 +127,9 @@
 
                                                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12 order-sm-0 order-1">
                                                             <div class="inv--payment-info">
-                                                                <p><span class="inv-subtitle">Bank Name:</span> <span>Bank of America</span></p>
-                                                                <p><span class="inv-subtitle">Account Number: </span> <span>1234567890</span></p>
-                                                                <p><span class="inv-subtitle">SWIFT code:</span> <span>VS70134</span></p>
-                                                                <p><span class="inv-subtitle">Country: </span> <span>United States</span></p>
+                                                                <p><span class="inv-subtitle"> </span>  <span> </span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>000000.00</span></p>
+                                                                <p><span class="inv-subtitle"> </span> <span>0000000.00</span></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -130,7 +138,7 @@
                                                 <div class="inv--note">
                                                     <div class="row mt-4">
                                                         <div class="col-sm-12 col-12 order-sm-0 order-1">
-                                                            <p>Gracias por usar Capital Quick</p>
+                                                            <p>Gracias por usar CapitalQuick.</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -173,30 +181,7 @@
     import '@/assets/sass/apps/invoice-preview.scss';
 
     import { useMeta } from '@/composables/use-meta';
-    useMeta({ title: 'Invoice Preview' });
-
-    const items = ref([]);
-    const columns = ref([]);
-
-    onMounted(() => {
-        bind_data();
-    });
-
-    const bind_data = () => {
-        columns.value = [
-            { key: 'id', label: 'S.NO' },
-            { key: 'title', label: 'ITEMS' },
-            { key: 'quantity', label: 'QTY' },
-            { key: 'price', label: 'PRICE', class: 'text-end' },
-            { key: 'amount', label: 'AMOUNT', class: 'text-end' },
-        ];
-        items.value = [
-            { id: 1, title: 'Calendar App Customization', quantity: 1, price: '120', amount: '120' },
-            { id: 2, title: 'Chat App Customization', quantity: 1, price: '230', amount: '230' },
-            { id: 3, title: 'Laravel Integration', quantity: 1, price: '405', amount: '405' },
-            { id: 4, title: 'Backend UI Design', quantity: 1, price: '2500', amount: '2500' },
-        ];
-    };
+    useMeta({ title: 'Balance General' });
 
     const print = () => {
         window.print();

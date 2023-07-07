@@ -12,7 +12,6 @@ export default new createStore({
         menu_style: 'vertical',
         layout_style: 'full',
         countryList: [
-            { code: 'zh', name: 'Chinese' },
             { code: 'da', name: 'Danish' },
             { code: 'en', name: 'English' },
             { code: 'fr', name: 'French' },

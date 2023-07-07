@@ -12796,10 +12796,6 @@ body.dark {
   color: #888ea8;
 }
 
-.dark .apps-invoice .content-section .inv--total-amounts {
-  border-bottom: 1px solid #191e3a;
-}
-
 .dark .apps-invoice-add .invoice-detail-body,
 .dark .apps-invoice-add .invoice-actions,
 .dark .apps-invoice-add .invoice-actions-btn {
