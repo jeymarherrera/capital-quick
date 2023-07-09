@@ -6,7 +6,9 @@
           <div class="page-header">
             <nav class="breadcrumb-one" aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:;">JIC</a></li>
+                <li class="breadcrumb-item">
+                  <a href="javascript:;">CapitalQuick</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   <span>Ventas Finales</span>
                 </li>
@@ -66,14 +68,11 @@
               <template #cantidad="props">
                 {{ props.row.cantidad }}
               </template>
-              <template #precio="props">
-                {{ parseFloat(props.row.precio).toFixed(2) || "N/A" }}
+              <template #costo_unitario="props">
+                {{ parseFloat(props.row.costo_unitario).toFixed(2) || "N/A" }}
               </template>
-              <template #monto="props">
-                {{ parseFloat(props.row.monto).toFixed(2) || "N/A" }}
-              </template>
-              <template #otorga_credito="props">
-                {{ props.row.otorga_credito }}
+              <template #total="props">
+                {{ parseFloat(props.row.total).toFixed(2) || "N/A" }}
               </template>
               <template #abono="props">
                 {{ parseFloat(props.row.abono).toFixed(2) || "N/A" }}
@@ -212,7 +211,7 @@
 import Papa from "papaparse";
 import * as msg from "@/helpers/mensajes";
 import "@/assets/sass/apps/invoice-list.scss";
-import * as ventasService from "@/services/ventas";
+import * as comprasService from "@/services/compras";
 export default {
   data() {
     return {
@@ -225,9 +224,8 @@ export default {
         "fecha",
         "nombre",
         "cantidad",
-        "precio",
-        "monto",
-        "otorga_credito",
+        "costo_unitario",
+        "total",
         "abono",
         "fecha_cancelacion",
         "cancelacion",
@@ -270,9 +268,9 @@ export default {
     };
   },
   methods: {
-    getAllventas() {
-      ventasService
-        .ObtenerTodasventas()
+    getAllcompras() {
+      comprasService
+        .ObtenerTodascompras()
         .then((items) => (this.items = items))
 
         .catch((err) => console.log(err));
@@ -331,7 +329,7 @@ export default {
     },
   },
   mounted() {
-    this.getAllventas();
+    this.getAllcompras();
   },
 };
 </script>

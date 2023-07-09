@@ -6,6 +6,8 @@ use Illuminate\Http\RedirectResponse;
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\ComprasController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstitutoController;
 use App\Http\Controllers\AuthController;
@@ -38,7 +40,21 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get("/auth/confirm/{email}", [RegisterController::class, 'VerificarCuenta']);
 
 
-Route::get('/ventas/all', [VentasController::class, 'GetAllEventos']);
+Route::get('/ventas/all', [VentasController::class, 'GetAllVentas']);
+Route::get('/compras/all', [ComprasController::class, 'GetAllCompras']);
+Route::get('/costos/all', [ComprasController::class, 'GetAllCostos']);
+
+
+Route::get('/balance/all', [ComprasController::class, 'GetAllbalance']);
+Route::get('/flujocaja/all', [ComprasController::class, 'GetAllCaja']);
+Route::get('/Valores/mensual', [ComprasController::class, 'TotalesMensuales']);
+Route::get('/Compra/mensual', [ComprasController::class, 'TotalesCompras']);
+Route::get('/Gastos/mensual', [ComprasController::class, 'TotalesGastos']);
+
+
+Route::post('/flujo/balance', [ComprasController::class, 'Guardarflujo']);
+
+
 
 Route::get('/{any}', [AppController::class, 'index'])->where('any', '.*');
 

@@ -214,7 +214,7 @@
 import Papa from "papaparse";
 import * as msg from "@/helpers/mensajes";
 import "@/assets/sass/apps/invoice-list.scss";
-import * as flujoService from "@/services/compras";
+import * as ventasService from "@/services/ventas";
 export default {
   data() {
     return {
@@ -223,23 +223,27 @@ export default {
         eve_estatus: 0,
       },
       columns: [
+        "id",
+        "fecha",
         "nombre",
-        "Enero",
-        "Febrero",
-        "Marzo",
-        "Abril",
-        "Mayo",
-        "Junio",
-        "Julio",
-        "Agosto",
-        "Septiembre",
-        "Octubre",
-        "Noviembre",
-        "Diciembre",
+        "cantidad",
+        "precio",
+        "monto",
+        "otorga_credito",
+        "abono",
+        "fecha_cancelacion",
+        "cancelacion",
       ],
 
       table_option: {
-        headings: {},
+        headings: {
+          id: (h, row, index) => {
+            return "#";
+          },
+          fecha_cancelacion: (h, row, index) => {
+            return "Fecha Cancelacion";
+          },
+        },
         perPage: 10,
         perPageValues: [5, 10, 20, 50],
         skin: "table table-hover",
@@ -253,19 +257,11 @@ export default {
         },
         resizableColumns: false,
         sortable: [
-          "nombre",
-          "Enero",
-          "Febrero",
-          "Marzo",
-          "Abril",
-          "Mayo",
-          "Junio",
-          "Julio",
-          "Agosto",
-          "Septiembre",
-          "Octubre",
-          "Noviembre",
-          "Diciembre",
+          "id",
+          "nombres",
+          "lugar",
+          "fecha_inicio",
+          "fecha_finalizacion",
         ],
         sortIcon: {
           base: "sort-icon-none",
@@ -276,9 +272,9 @@ export default {
     };
   },
   methods: {
-    getAllFlujo() {
-      flujoService
-        .Obtenerflujo()
+    getAllventas() {
+      ventasService
+        .ObtenerTodasventas()
         .then((items) => (this.items = items))
 
         .catch((err) => console.log(err));
@@ -337,7 +333,7 @@ export default {
     },
   },
   mounted() {
-    this.getAllFlujo();
+    this.getAllventas();
   },
 };
 </script>

@@ -225,33 +225,29 @@
             data-bs-parent="#sidebar"
           >
             <li>
-              <router-link to="/components/tabs" @click="toggleMobileMenu"
+              <router-link to="/components/ventas" @click="toggleMobileMenu"
                 >Registro Ventas</router-link
               >
             </li>
             <li>
-              <router-link to="/components/accordions" @click="toggleMobileMenu"
+              <router-link to="/components/Compras" @click="toggleMobileMenu"
                 >Registro Compras</router-link
               >
             </li>
             <li>
-              <router-link to="/components/modals" @click="toggleMobileMenu"
+              <router-link to="/components/CostoOpe" @click="toggleMobileMenu"
                 >Costos Operativos</router-link
               >
             </li>
             <li>
-              <router-link to="/components/cards" @click="toggleMobileMenu"
-                >Cards</router-link
+              <router-link to="/components/flujoD" @click="toggleMobileMenu"
+                >Flujo</router-link
               >
             </li>
+
             <li>
-              <router-link to="/components/carousel" @click="toggleMobileMenu"
-                >Carousel</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/components/countdown" @click="toggleMobileMenu"
-                >Countdown</router-link
+              <router-link to="/components/FlujoCaja" @click="toggleMobileMenu"
+                >Flujo Caja</router-link
               >
             </li>
             <li>

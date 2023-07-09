@@ -47,30 +47,26 @@ const routes = [
 
     //components
     {
-        path: '/components/tabs',
-        name: 'tabs',
-        component: () => import(/* webpackChunkName: "components-tabs" */ '../views/components/tabs.vue'),
+        path: '/components/ventas',
+        name: 'Ventas_Finales',
+        component: () => import(/* webpackChunkName: "components-Ventas" */ '../views/components/Ventas.vue'),
     },
     {
-        path: '/components/accordions',
-        name: 'accordions',
-        component: () => import(/* webpackChunkName: "components-accordions" */ '../views/components/accordions.vue'),
+        path: '/components/Compras',
+        name: 'Compras',
+        component: () => import(/* webpackChunkName: "components-Compras" */ '../views/components/Compras.vue'),
     },
     {
-        path: '/components/modals',
-        name: 'modals',
-        component: () => import(/* webpackChunkName: "components-modals" */ '../views/components/modals.vue'),
+        path: '/components/CostoOpe',
+        name: 'CostoOpe',
+        component: () => import(/* webpackChunkName: "components-CostoOpe" */ '../views/components/CostoOpe.vue'),
     },
     {
-        path: '/components/cards',
-        name: 'cards',
-        component: () => import(/* webpackChunkName: "components-cards" */ '../views/components/cards.vue'),
+        path: '/components/flujoD',
+        name: 'DisenoFlujo',
+        component: () => import(/* webpackChunkName: "components-cards" */ '../views/components/flujoD.vue'),
     },
-    {
-        path: '/components/carousel',
-        name: 'carousel',
-        component: () => import(/* webpackChunkName: "components-carousel" */ '../views/components/carousel.vue'),
-    },
+   
 
     {
         path: '/components/timeline',
@@ -104,9 +100,9 @@ const routes = [
         component: () => import(/* webpackChunkName: "components-lightbox" */ '../views/components/lightbox.vue'),
     },
     {
-        path: '/components/countdown',
-        name: 'countdown',
-        component: () => import(/* webpackChunkName: "components-countdown" */ '../views/components/countdown.vue'),
+        path: '/components/FlujoCaja',
+        name: 'FlujoCaja',
+        component: () => import(/* webpackChunkName: "components-countdown" */ '../views/components/Flujo_Caja.vue'),
     },
     {
         path: '/components/counter',
