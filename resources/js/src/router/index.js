@@ -47,81 +47,50 @@ const routes = [
 
     //components
     {
-        path: '/components/ventas',
+        path: '/components/ventas/:id',
         name: 'Ventas_Finales',
         component: () => import(/* webpackChunkName: "components-Ventas" */ '../views/components/Ventas.vue'),
     },
     {
-        path: '/components/Compras',
+        path: '/components/Compras/:id',
         name: 'Compras',
         component: () => import(/* webpackChunkName: "components-Compras" */ '../views/components/Compras.vue'),
     },
     {
-        path: '/components/CostoOpe',
+        path: '/components/CostoOpe/:id',
         name: 'CostoOpe',
         component: () => import(/* webpackChunkName: "components-CostoOpe" */ '../views/components/CostoOpe.vue'),
     },
     {
-        path: '/components/flujoD',
+        path: '/components/flujoD/:id',
         name: 'DisenoFlujo',
         component: () => import(/* webpackChunkName: "components-cards" */ '../views/components/flujoD.vue'),
     },
    
 
     {
-        path: '/components/timeline',
-        name: 'timeline',
-        component: () => import(/* webpackChunkName: "components-timeline" */ '../views/components/timeline.vue'),
-    },
-    {
-        path: '/components/media-object',
-        name: 'media-object',
-        component: () => import(/* webpackChunkName: "components-media-object" */ '../views/components/media_object.vue'),
-    },
-    {
-        path: '/components/list-group',
-        name: 'list-group',
-        component: () => import(/* webpackChunkName: "components-list-group" */ '../views/components/list_group.vue'),
-    },
-    {
-        path: '/components/pricing-table',
-        name: 'pricing-table',
-        component: () => import(/* webpackChunkName: "components-pricing-table" */ '../views/components/pricing_table.vue'),
-    },
-    {
-        path: '/components/notifications',
-        name: 'notifications',
-        component: () => import(/* webpackChunkName: "components-notifications" */ '../views/components/toast.vue'),
-    },
-
-    {
-        path: '/components/lightbox',
-        name: 'lightbox',
-        component: () => import(/* webpackChunkName: "components-lightbox" */ '../views/components/lightbox.vue'),
-    },
-    {
-        path: '/components/FlujoCaja',
+        path: '/components/FlujoCaja/:id',
         name: 'FlujoCaja',
         component: () => import(/* webpackChunkName: "components-countdown" */ '../views/components/Flujo_Caja.vue'),
     },
     {
-        path: '/components/counter',
-        name: 'counter',
-        component: () => import(/* webpackChunkName: "components-counter" */ '../views/components/counter.vue'),
+        path: '/components/Rfinaciera/:id',
+        name: 'Rfinaciera',
+        component: () => import(/* webpackChunkName: "components-counter" */ '../views/components/Rfinaciera.vue'),
     },
     {
-        path: '/components/sweetalert',
-        name: 'sweetalert',
-        component: () => import(/* webpackChunkName: "components-sweetalert" */ '../views/components/sweetalert.vue'),
+        path: '/components/SelectFinanza/:id',
+        name: 'Finanzas',
+        component: () => import(/* webpackChunkName: "components-sweetalert" */ '../views/components/SelectFinanza.vue'),
     },
 
-    //fonts
+    //balance
+   
     {
-        path: '/font-icons',
-        name: 'font-icons',
-        component: () => import(/* webpackChunkName: "font-icons" */ '../views/others/font_icons.vue'),
+        path: '/SeleccionBalance',
+        name: 'Seleccion',
+        component: () => import(/* webpackChunkName: "font-icons" */ '../views/components/SelectBalance.vue'),
     },
-
     //pages
     {
         path: '/pages/helpdesk',

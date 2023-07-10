@@ -636,7 +636,9 @@
                 <router-link to="/components/FlujoCaja">Flujo Caja</router-link>
               </li>
               <li>
-                <router-link to="/components/counter">Counter</router-link>
+                <router-link to="/components/Rfinaciera"
+                  >Rfinaciera</router-link
+                >
               </li>
               <li>
                 <router-link to="/components/sweetalert"

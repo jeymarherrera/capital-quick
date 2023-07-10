@@ -497,38 +497,6 @@
                 </div>
               </div>
             </div>
-
-            <div class="col-xl-3">
-              <div class="invoice-actions-btn">
-                <div class="invoice-action-btn">
-                  <div class="row">
-                    <div class="col-xl-12 col-md-3 col-sm-6">
-                      <a href="javascript:;" class="btn btn-primary btn-send"
-                        >Enviar</a
-                      >
-                    </div>
-                    <div class="col-xl-12 col-md-3 col-sm-6">
-                      <a
-                        href="javascript:;"
-                        class="btn btn-secondary btn-print action-print"
-                        @click="print()"
-                        >Imprimir</a
-                      >
-                    </div>
-                    <div class="col-xl-12 col-md-3 col-sm-6">
-                      <a
-                        href="javascript:;"
-                        class="btn btn-success btn-download"
-                        >Descargar</a
-                      >
-                    </div>
-                    <!-- <div class="col-xl-12 col-md-3 col-sm-6">
-                                            <router-link to="/apps/invoice/edit" class="btn btn-dark btn-edit">Edit</router-link>
-                                        </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -557,69 +525,69 @@ export default {
     };
   },
   methods: {
-    getAllFlujo() {
+    getAllFlujo(id) {
       flujoService
-        .Obtenerflujo()
+        .Obtenerflujo(id)
         .then((items) => (this.items = items))
 
         .catch((err) => console.log(err));
     },
-    getAllvalores() {
+    getAllvalores(id) {
       flujoService
-        .ObtenerValoresM()
+        .ObtenerValoresM(id)
         .then((valores) => {
           this.valores = valores;
-          this.sumarValores();
+          this.sumarValores(id);
         })
         .catch((err) => console.log(err));
     },
-    sumarValores() {
+    sumarValores(id) {
       const valoresArray = Object.values(this.valores);
       this.sumaValores = valoresArray
         .reduce((total, valor) => total + parseFloat(valor.replace(",", "")), 0)
         .toFixed(2);
       console.log(this.sumaValores);
-      this.getAllvaloresC();
+      this.getAllvaloresC(id);
     },
-    getAllvaloresC() {
+    getAllvaloresC(id) {
       flujoService
-        .ObtenerValoresC()
+        .ObtenerValoresC(id)
         .then((valoresC) => {
           this.valoresC = valoresC;
-          this.sumarValoresC();
+          this.sumarValoresC(id);
         })
         .catch((err) => console.log(err));
     },
-    sumarValoresC() {
+    sumarValoresC(id) {
       const valoresArray = Object.values(this.valoresC);
       this.sumaValoresC = valoresArray
         .reduce((total, valor) => total + parseFloat(valor.replace(",", "")), 0)
         .toFixed(2);
       console.log(this.sumaValoresC);
-      this.getAllvaloresG();
+      this.getAllvaloresG(id);
     },
-    getAllvaloresG() {
+    getAllvaloresG(id) {
       flujoService
-        .ObtenerValoresG()
+        .ObtenerValoresG(id)
         .then((valoresG) => {
           this.valoresG = valoresG;
           this.sumarValoresG();
         })
         .catch((err) => console.log(err));
     },
-    sumarValoresG() {
+    sumarValoresG(id) {
       this.sumaValoresG = this.valoresG.total * 12;
       console.log(this.sumaValoresG);
-      this.calcularSumaValores();
+      this.calcularSumaValores(id);
     },
-    calcularSumaValores() {
+    calcularSumaValores(id) {
       const suma =
         parseFloat(this.sumaValoresC) + parseFloat(this.sumaValoresG);
       this.sumaValoresT = suma.toFixed(2);
       console.log(this.sumaValoresT);
-      this.calcularSumaValoresF();
+      this.calcularSumaValoresF(id);
     },
-    calcularSumaValoresF() {
+    calcularSumaValoresF(id) {
       this.sumaValoresF = parseFloat(
         (this.sumaValores - this.sumaValoresT).toFixed(2)
       );
@@ -627,8 +595,9 @@ export default {
     },
   },
   mounted() {
-    this.getAllFlujo();
-    this.getAllvalores();
+    const id = this.$route.params.id;
+    this.getAllFlujo(id);
+    this.getAllvalores(id);
   },
 };
 </script>

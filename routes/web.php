@@ -29,27 +29,30 @@ use App\Http\Controllers\DocumentoController;
 */
 //Rutas de SEGURIDAD
 
-Route::post("/registrar", [RegisterController::class, 'Registro']);
+Route::get('/ventas/{eid}', [VentasController::class, 'GetAllVentas']);
 
-Route::post("/login", [AuthController::class, 'Authenticate'])->name('login');
-
-
-
-route::post("/recuperar", [AuthController::class, 'RecuperarCuenta']);
-Route::post('/logout', [AuthController::class, 'logout']);
-Route::get("/auth/confirm/{email}", [RegisterController::class, 'VerificarCuenta']);
+Route::get('/balance/{eid}', [ComprasController::class, 'GetAllbalanceid']);
 
 
-Route::get('/ventas/all', [VentasController::class, 'GetAllVentas']);
-Route::get('/compras/all', [ComprasController::class, 'GetAllCompras']);
-Route::get('/costos/all', [ComprasController::class, 'GetAllCostos']);
+
+Route::get('/compras/all/{eid}', [ComprasController::class, 'GetAllCompras']);
+Route::get('/costos/all/{eid}', [ComprasController::class, 'GetAllCostos']);
 
 
-Route::get('/balance/all', [ComprasController::class, 'GetAllbalance']);
-Route::get('/flujocaja/all', [ComprasController::class, 'GetAllCaja']);
-Route::get('/Valores/mensual', [ComprasController::class, 'TotalesMensuales']);
-Route::get('/Compra/mensual', [ComprasController::class, 'TotalesCompras']);
-Route::get('/Gastos/mensual', [ComprasController::class, 'TotalesGastos']);
+Route::get('/balances', [ComprasController::class, 'GetAllbalance']);
+
+
+
+Route::post('/finanzag', [ComprasController::class, 'GuardarFinanza']);
+Route::post('/GastoOpe', [ComprasController::class, 'GuardarGasto']);
+
+
+
+Route::get('/flujocaja/all/{eid}', [ComprasController::class, 'GetAllCaja']);
+Route::get('/Valores/mensual/{eid}', [ComprasController::class, 'TotalesMensuales']);
+Route::get('/Compra/mensual/{eid}', [ComprasController::class, 'TotalesCompras']);
+Route::get('/Gastos/mensual/{eid}', [ComprasController::class, 'TotalesGastos']);
+Route::get('/razones/fina', [ComprasController::class, 'GetAllRazones']);
 
 
 Route::post('/flujo/balance', [ComprasController::class, 'Guardarflujo']);
