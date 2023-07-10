@@ -1,7 +1,7 @@
 import { ApiService } from "./api.service";
-export const ObtenerTodascompras = () => {
+export const ObtenerTodascompras = (id) => {
     return new Promise(async (resolve) => {
-        return ApiService.get("compras/all")
+        return ApiService.get("compras/all/"+id)
             .then((response) => {
                 resolve(response.data);
             })
@@ -11,9 +11,9 @@ export const ObtenerTodascompras = () => {
     });
 };
 
-export const ObtenerCostosOpe = () => {
+export const ObtenerCostosOpe = (id) => {
     return new Promise(async (resolve) => {
-        return ApiService.get("costos/all")
+        return ApiService.get("costos/all/"+id)
             .then((response) => {
                 resolve(response.data);
             })
@@ -24,66 +24,13 @@ export const ObtenerCostosOpe = () => {
 };
 ///
 
-export const GuardarEvento = (evento) => {
-    return new Promise(async (resolve) => {
-        return ApiService.post("evento", evento)
-            .then((response) => {
-                resolve(response);
-            })
-            .catch(({ response }) => {
-                resolve(response);
-            });
-    });
-};
 
-
-// Actualizar Datos
-
-
-export const ActualziarEve = (id_eve, eve) => {
-    return new Promise(async (resolve) => {
-        return ApiService.put("/evento/" + id_eve + "/edit", eve)
-            .then((response) => {
-                resolve(response);
-            })
-            .catch(({ response }) => {
-                resolve(response);
-            });
-    });
-};
-
-// Desactivar Datos
-
-export const Desactivareve = (id_eve, eve) => {
-    return new Promise(async (resolve) => {
-        return ApiService.put("/evento/" + id_eve + "/desactivacion", eve)
-            .then((response) => {
-                resolve(response);
-            })
-            .catch(({ response }) => {
-                resolve(response);
-            });
-    });
-};
-
-//Borrar Datos PELIGROSO
-export const DeleteEvento = (id_e) => {
-    return new Promise(async (resolve) => {
-        return ApiService.delete("/evento/delete/" + id_e)
-            .then((response) => {
-                resolve(response);
-            })
-            .catch(({ response }) => {
-                resolve(response);
-            });
-    });
-};
 
 
 // Balance
 export const ObtenerTodosBalance = () => {
     return new Promise(async (resolve) => {
-        return ApiService.get("balance/all")
+        return ApiService.get("balances")
             .then((response) => {
                 resolve(response.data);
             })
@@ -93,9 +40,13 @@ export const ObtenerTodosBalance = () => {
     });
 };
 
-export const Obtenerflujo = () => {
+
+
+
+
+export const ObtenerBalanceid = (id) => {
     return new Promise(async (resolve) => {
-        return ApiService.get("flujocaja/all")
+        return ApiService.get("balance/"+ id)
             .then((response) => {
                 resolve(response.data);
             })
@@ -105,9 +56,35 @@ export const Obtenerflujo = () => {
     });
 };
 
-export const ObtenerValoresM = () => {
+export const GuardarRfinaciera = (finanza) => {
     return new Promise(async (resolve) => {
-        return ApiService.get("Valores/mensual")
+        return ApiService.post("finanzag", finanza)
+            .then((response) => {
+                resolve(response);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};
+
+
+export const GuardarGastoOpe = (finanza) => {
+    return new Promise(async (resolve) => {
+        return ApiService.post("GastoOpe", finanza)
+            .then((response) => {
+                resolve(response);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};
+
+
+export const Obtenerflujo = (id) => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("flujocaja/all/"+id)
             .then((response) => {
                 resolve(response.data);
             })
@@ -116,9 +93,10 @@ export const ObtenerValoresM = () => {
             });
     });
 };
-export const ObtenerValoresC = () => {
+
+export const ObtenerValoresM = (id) => {
     return new Promise(async (resolve) => {
-        return ApiService.get("Compra/mensual")
+        return ApiService.get("Valores/mensual/"+id)
             .then((response) => {
                 resolve(response.data);
             })
@@ -127,9 +105,20 @@ export const ObtenerValoresC = () => {
             });
     });
 };
-export const ObtenerValoresG = () => {
+export const ObtenerValoresC = (id) => {
     return new Promise(async (resolve) => {
-        return ApiService.get("Gastos/mensual")
+        return ApiService.get("Compra/mensual/"+id)
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};
+export const ObtenerValoresG = (id) => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("Gastos/mensual/"+id)
             .then((response) => {
                 resolve(response.data);
             })
@@ -145,6 +134,20 @@ export const GuardarFlujoCaja = (flujoc) => {
         return ApiService.post("flujo/balance", flujoc)
             .then((response) => {
                 resolve(response);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};
+
+// RAZONES FINANCIERAS
+
+export const ObtenerRelacionF = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("razones/fina")
+            .then((response) => {
+                resolve(response.data);
             })
             .catch(({ response }) => {
                 resolve(response);

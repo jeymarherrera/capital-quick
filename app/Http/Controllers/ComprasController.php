@@ -6,8 +6,15 @@ use App\Models\Compras;
 use App\Models\Costos;
 use App\Models\Balance;
 use App\Models\flujo_caja;
+use App\Models\razones;
+use App\Models\gastos;
+
+
 
 use App\Http\Requests\CreateBalanceRequest;
+use App\Http\Requests\CreatefinanzaRequest;
+use App\Http\Requests\CreateGastoRequest;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,28 +23,34 @@ class ComprasController extends Controller
 {
 
 
-    public function GetAllCompras()
+    public function GetAllCompras($eid)
     {
         return Compras::orderByDesc('id')
             ->join('productos', 'compras.id_producto', '=', 'productos.id')
             ->select('compras.*', 'productos.descripcion as nombre')
-            ->where('compras.id_balance', 1)
+            ->where('compras.id_balance', $eid)
             ->get();
     }
 
 
-    public function GetAllCostos()
+    public function GetAllCostos($eid)
     {
-        return Costos::orderBy('id', 'asc')->where('id_balance', 1)->get();
+        return Costos::orderBy('id', 'asc')->where('id_balance', $eid)->get();
     }
 
     //balance
 
     public function GetAllbalance()
     {
+
+
         return Balance::orderBy('id', 'asc')->get();
     }
 
+    public function GetAllbalanceid($eid)
+    {
+        return Balance::where('id', $eid)->orderBy('id', 'asc')->get();
+    }
     public function Guardarflujo(CreateBalanceRequest $request)
     {
 
@@ -75,7 +88,7 @@ class ComprasController extends Controller
 
     //caja
 
-    public function GetAllCaja()
+    public function GetAllCaja($eid)
     {
         $proyecto = DB::table('Flujo_Caja as p')
             ->select(
@@ -93,14 +106,14 @@ class ComprasController extends Controller
                 'p.cuenta_p3',
                 'p.total_Salida',
             )
-            ->where('p.id_balance', '=', 1)
+            ->where('p.id_balance', '=', $eid)
             ->first();
 
         return response()->json($proyecto);
     }
 
 
-    public function TotalesMensuales()
+    public function TotalesMensuales($eid)
     {
         $totalesAbono = [];
         $totalesCancelacion = [];
@@ -112,12 +125,14 @@ class ComprasController extends Controller
                 ->whereYear('fecha_cancelacion', 2022)
                 ->whereMonth('fecha_cancelacion', $mes)
                 ->select(DB::raw('SUM(cancelacion) AS total_mes'))
+                ->where('id_balance', '=', $eid)
                 ->first();
 
             $totalMes2 = DB::table('ventas_anuales')
                 ->whereYear('fecha', 2022)
                 ->whereMonth('fecha', $mes)
                 ->select(DB::raw('SUM(abono) AS total_abono'))
+                ->where('id_balance', '=', $eid)
                 ->first();
 
             $totalesAbono[$mes] = number_format($totalMes2->total_abono, 2);
@@ -129,7 +144,7 @@ class ComprasController extends Controller
     }
 
 
-    public function TotalesCompras()
+    public function TotalesCompras($eid)
     {
         $totalesAbono = [];
         $totalesCancelacion = [];
@@ -141,12 +156,14 @@ class ComprasController extends Controller
                 ->whereYear('fecha_cancelacion', 2022)
                 ->whereMonth('fecha_cancelacion', $mes)
                 ->select(DB::raw('SUM(cancelacion) AS total_mes'))
+                ->where('id_balance', '=', $eid)
                 ->first();
 
             $totalMes2 = DB::table('compras')
                 ->whereYear('fecha', 2022)
                 ->whereMonth('fecha', $mes)
                 ->select(DB::raw('SUM(abono) AS total_abono'))
+                ->where('id_balance', '=', $eid)
                 ->first();
 
             $totalesAbono[$mes] = number_format($totalMes2->total_abono, 2);
@@ -157,11 +174,60 @@ class ComprasController extends Controller
         return response()->json($totalesMeses);
     }
 
-    public function TotalesGastos()
+    public function TotalesGastos($eid)
     {
         $totalCostos = DB::table('costos_operativos')
             ->select(DB::raw('ROUND(COALESCE(SUM(costo), 0), 2) AS total'))
+            ->where('id_balance', '=', $eid)
             ->first();
         return response()->json($totalCostos);
+    }
+
+
+    public function GetAllRazones()
+    {
+        return razones::orderByDesc('id')
+            ->select('Razones_Financieras.*')
+            ->get();
+    }
+
+    public function GuardarFinanza(CreatefinanzaRequest $request)
+    {
+        $razon = $request->nombre;
+        $valor = $request->valor;
+        $year = $request->year;
+
+        $finanza = razones::where('razon', $razon)->first();
+
+        if ($finanza) {
+            $finanza->$year = $valor;
+            $finanza->save();
+        }
+
+        if ($finanza) {
+
+            return response()->json(["title" => "Razon Financiera 😁", "mensaje" => "¡Se ha Actualizado !  ✅📆 "], 200);
+        }
+        return response()->json(["title" => "Aviso ❌", "mensaje" => "Lo siento, ha ocurrido un error. Por favor, verifique los campos e inténtelo de nuevo. ❌📝"], 400);
+    }
+
+
+    public function GuardarGasto(CreateGastoRequest $request)
+    {
+
+
+        $finanza = gastos::create([
+            'id_balance' => $request->id_balance,
+            'descripcion' => $request->nombre,
+            'costo' => $request->total,
+
+        ]);
+
+
+        if ($finanza) {
+
+            return response()->json(["title" => "Costo Operativo 😁", "mensaje" => "¡Se ha creado nuevo costo !  ✅📆 "], 200);
+        }
+        return response()->json(["title" => "Aviso ❌", "mensaje" => "Lo siento, ha ocurrido un error. Por favor, verifique los campos e inténtelo de nuevo. ❌📝"], 400);
     }
 }

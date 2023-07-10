@@ -38,7 +38,7 @@
                                   class="form-control form-select"
                                   v-model="Flujo_Caja.id_balance"
                                 >
-                                  <option value="0">Seleccione Evento</option>
+                                  <option value="0">Seleccione Balance</option>
                                   <option
                                     v-for="bal in Balance_anual"
                                     :key="bal.id"
@@ -59,7 +59,7 @@
                                   id="titulo_flujo"
                                   class="form-control"
                                   v-model="Flujo_Caja.titulo_flujo"
-                                  placeholder="Ingrese nombre del sub evento"
+                                  placeholder="Ingrese nombre del Titulo"
                                 />
                               </div>
                             </div>

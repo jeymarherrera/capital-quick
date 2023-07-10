@@ -146,7 +146,7 @@
 
         <li class="menu">
           <router-link
-            to="/font-icons"
+            to="/SeleccionBalance"
             class="dropdown-toggle"
             @click="toggleMobileMenu"
           >
@@ -170,133 +170,6 @@
               <span>{{ $t("Razones Fin.") }}</span>
             </div>
           </router-link>
-        </li>
-
-        <li class="menu">
-          <a
-            class="dropdown-toggle"
-            data-bs-toggle="collapse"
-            data-bs-target="#components"
-            aria-controls="components"
-            aria-expanded="false"
-          >
-            <div class>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-box"
-              >
-                <path
-                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
-                />
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                <line x1="12" y1="22.08" x2="12" y2="12" />
-              </svg>
-              <span>{{ $t("Ppto. de Caja") }}</span>
-            </div>
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-chevron-right"
-              >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
-          </a>
-
-          <ul
-            id="components"
-            class="collapse submenu list-unstyled"
-            data-bs-parent="#sidebar"
-          >
-            <li>
-              <router-link to="/components/ventas" @click="toggleMobileMenu"
-                >Registro Ventas</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/components/Compras" @click="toggleMobileMenu"
-                >Registro Compras</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/components/CostoOpe" @click="toggleMobileMenu"
-                >Costos Operativos</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/components/flujoD" @click="toggleMobileMenu"
-                >Flujo</router-link
-              >
-            </li>
-
-            <li>
-              <router-link to="/components/FlujoCaja" @click="toggleMobileMenu"
-                >Flujo Caja</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/components/counter" @click="toggleMobileMenu"
-                >Counter</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/components/sweetalert" @click="toggleMobileMenu"
-                >Sweet Alerts</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/components/timeline" @click="toggleMobileMenu"
-                >Timeline</router-link
-              >
-            </li>
-            <li>
-              <router-link
-                to="/components/notifications"
-                @click="toggleMobileMenu"
-                >Notifications</router-link
-              >
-            </li>
-            <li>
-              <router-link
-                to="/components/media-object"
-                @click="toggleMobileMenu"
-                >Media Object</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/components/list-group" @click="toggleMobileMenu"
-                >List Group</router-link
-              >
-            </li>
-            <li>
-              <router-link
-                to="/components/pricing-table"
-                @click="toggleMobileMenu"
-                >Pricing Tables</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/components/lightbox" @click="toggleMobileMenu"
-                >Lightbox</router-link
-              >
-            </li>
-          </ul>
         </li>
 
         <li class="menu">
