@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\ProyeccionesController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstitutoController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DireccionController;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\DocumentoController;
+use App\Models\Proyecciones;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +34,7 @@ use App\Http\Controllers\DocumentoController;
 Route::get('/ventas/{eid}', [VentasController::class, 'GetAllVentas']);
 
 Route::get('/balance/{eid}', [ComprasController::class, 'GetAllbalanceid']);
-
+Route::get('/resultado', [ProyeccionesController::class, 'GetLastProyeccion']);
 
 
 Route::get('/compras/all/{eid}', [ComprasController::class, 'GetAllCompras']);
@@ -45,7 +47,7 @@ Route::get('/balances', [ComprasController::class, 'GetAllbalance']);
 
 Route::post('/finanzag', [ComprasController::class, 'GuardarFinanza']);
 Route::post('/GastoOpe', [ComprasController::class, 'GuardarGasto']);
-
+Route::post('/proyeccion', [ProyeccionesController::class, 'GuardarProyecciones']);
 
 
 Route::get('/flujocaja/all/{eid}', [ComprasController::class, 'GetAllCaja']);
