@@ -98,6 +98,7 @@
                               class="input-rate form-control"
                               placeholder="Ingrese el monto de financiamiento"
                               required
+                              v-model="montoFinanciamiento"
                             />
                           </div>
                         </div>
@@ -175,6 +176,7 @@
                           class="input-rate form-control"
                           placeholder="Ingrese la tasa de interes"
                           required
+                          v-model="tasaInteres"
                         />
                       </div>
                     </div>
@@ -236,7 +238,11 @@
                   <div class="invoice-action-btn">
                     <div class="row">
                       <div class="col-xl-12 col-md-4">
-                        <a href="javascript:;" class="btn btn-primary btn-send">Calcular</a>
+                        <a
+                          href="javascript:;"
+                          class="btn btn-primary btn-send"
+                          @click="calcular"
+                        >Calcular</a>
                       </div>
                     </div>
                   </div>
@@ -262,9 +268,7 @@
                         <div class="inv--detail-section inv--customer-detail-section">
                           <div class="row">
                             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4 align-self-center">
-                              <p
-                                class="inv-to"
-                              >Para esta inversión usted deberá pagar lo siguente:</p>
+                              <p class="inv-to">Para esta inversión usted deberá pagar lo siguente:</p>
                             </div>
                           </div>
                         </div>
@@ -303,19 +307,23 @@
                                     <p class>Sub Total:</p>
                                   </div>
                                   <div class="col-sm-4 col-5">
-                                    <p class>$3155</p>
+                                    <p
+                                      class
+                                    >${{proyeccion.capitalMensual*proyeccion.cantidadTiempo}}</p>
                                   </div>
                                   <div class="col-sm-8 col-7">
                                     <p class>Interés:</p>
                                   </div>
                                   <div class="col-sm-4 col-5">
-                                    <p class>$700</p>
-                                  </div>                              
+                                    <p
+                                      class
+                                    >${{proyeccion.interesMensual*proyeccion.cantidadTiempo}}</p>
+                                  </div>
                                   <div class="col-sm-8 col-7 grand-total-title">
-                                    <h4 class>Total a Pagar :</h4>
+                                    <h4 class>Total a Pagar:</h4>
                                   </div>
                                   <div class="col-sm-4 col-5 grand-total-amount">
-                                    <h4 class>$3855</h4>
+                                    <h4 class>${{proyeccion.totalPagar}}</h4>
                                   </div>
                                 </div>
                               </div>
@@ -347,17 +355,18 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
+
 import "@/assets/sass/apps/invoice-add.scss";
 import "@/assets/sass/apps/invoice-preview.scss";
-//flatpickr
-import flatPickr from "vue-flatpickr-component";
 import "flatpickr/dist/flatpickr.css";
 import "@/assets/sass/forms/custom-flatpickr.css";
-import { useMeta } from "@/composables/use-meta";
 
+import { useMeta } from "@/composables/use-meta";
 useMeta({ title: "Calculadora" });
 
-const items = ref([]);
+import * as ProyeccionService from "@/services/proyeccion";
+import * as msg from "@/helpers/mensajes";
+
 const currency_list = ref([]);
 const selected_currency = ref({
   key: "PAB - Balboa Panameño",
@@ -368,6 +377,116 @@ const selected_tax_type = ref({ key: "Anual", value: 1 });
 
 const tax_frec_list = ref([]);
 const selected_tax_frec = ref({ key: "Anualmente", value: 1 });
+
+const montoFinanciamiento = ref(null);
+const tasaInteres = ref(null);
+
+const columns = ref([]);
+
+function calcular() {
+  montoFinanciamiento.value;
+
+  const objTI = selected_tax_type.value;
+  const unidadTiempo = objTI.key;
+  var cantidadTiempo = objTI.value;
+
+  if (unidadTiempo == "Mensual") {
+    cantidadTiempo = cantidadTiempo / 12;
+  }
+
+  tasaInteres.value;
+
+  const objTF = selected_tax_frec.value;
+  const valor = objTF.value;
+
+  const interesMensual = CalcularInteresMensual(
+    montoFinanciamiento.value,
+    tasaInteres.value,
+    valor
+  );
+
+  const totalPagar = CalcularTotal(
+    montoFinanciamiento.value,
+    tasaInteres.value,
+    valor,
+    cantidadTiempo
+  );
+
+  const totalPagarMensual = CalcularTotalMensual(totalPagar, cantidadTiempo);
+
+  const capitalMensual = CalcularCapitalMensual(
+    totalPagarMensual,
+    interesMensual
+  );
+
+  const datos = {
+    cantidadTiempo: cantidadTiempo * 12,
+    capitalMensual: capitalMensual,
+    interesMensual: interesMensual,
+    totalPagar: totalPagar,
+    totalPagarMensual: totalPagarMensual,
+    anexar: 0
+  };
+
+  guardarProyeccion(datos);
+}
+
+function CalcularInteresMensual(P, r, n) {
+  const porcentaje = r / n / 100;
+  return P * porcentaje;
+}
+
+function CalcularTotal(P, r, n, t) {
+  r = r / 100;
+  const A = P * (1 + r / n) ** (n * t);
+  return A;
+}
+
+function CalcularTotalMensual(A, t) {
+  t = t * 12;
+  return A / t;
+}
+
+function CalcularCapitalMensual(Am, i) {
+  return Am - i;
+}
+
+function guardarProyeccion(datos) {
+  console.log(datos);
+  ProyeccionService.GuardarProyeccion(datos)
+    .then(res => {
+      msg.ShowMessages(res);
+      if (res.status == 200) {
+        obtenerProyeccion();
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+const proyeccion = ref([]);
+const obtenerProyeccion = () => {
+  msg.toastr("Realizando calculo, por favor espere...", "info");
+  ProyeccionService.ObtenerProyeccion()
+    .then(proyeccionData => {
+      proyeccion.value = proyeccionData;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+const items = [];
+
+for (let i = 0; i < proyeccion.cantidadTiempo; i++) {
+  items.push({
+    id: i + 1,
+    quantity: proyeccion.capitalMensual.toFixed(2),
+    price: proyeccion.interesMensual.toFixed(2),
+    amount: proyeccion.totalPagar.toFixed(2)
+  });
+}
+
+items.value = items;
 
 onMounted(() => {
   //currency list
@@ -396,12 +515,8 @@ onMounted(() => {
     { key: "Mensualmente", value: 12 },
     { key: "Diariamente", value: 30 }
   ];
-
   bind_data();
 });
-
-
-const columns = ref([]);
 
 const bind_data = () => {
   columns.value = [
@@ -409,32 +524,6 @@ const bind_data = () => {
     { key: "quantity", label: "Monto" },
     { key: "price", label: "Interes", class: "text-end" },
     { key: "amount", label: "Total", class: "text-end" }
-  ];
-  items.value = [
-    {
-      id: 1,
-      quantity: 100,
-      price: "120",
-      amount: "120"
-    },
-    {
-      id: 2,
-      quantity: 100,
-      price: "230",
-      amount: "230"
-    },
-    {
-      id: 3,
-      quantity: 100,
-      price: "405",
-      amount: "405"
-    },
-    {
-      id: 4,
-      quantity: 100,
-      price: "2500",
-      amount: "2500"
-    }
   ];
 };
 </script>
