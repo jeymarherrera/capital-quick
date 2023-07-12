@@ -131,12 +131,8 @@ import { useMeta } from "@/composables/use-meta";
 
 useMeta({ title: "Calculadora" });
 
-
 function calcular() {
-
   // Crear la matriz de objetos para la tabla
-  
-
 }
 
 function CalcularInteresMensual(P, r, n) {
@@ -205,31 +201,31 @@ onMounted(() => {
 const columns = ref([]);
 
 items.value = [
-    {
-      id: 1,
-      quantity: 100,
-      price: "120",
-      amount: "120"
-    },
-    {
-      id: 2,
-      quantity: 100,
-      price: "230",
-      amount: "230"
-    },
-    {
-      id: 3,
-      quantity: 100,
-      price: "405",
-      amount: "405"
-    },
-    {
-      id: 4,
-      quantity: 100,
-      price: "2500",
-      amount: "2500"
-    }
-  ];
+  {
+    id: 1,
+    quantity: 100,
+    price: "120",
+    amount: "120"
+  },
+  {
+    id: 2,
+    quantity: 100,
+    price: "230",
+    amount: "230"
+  },
+  {
+    id: 3,
+    quantity: 100,
+    price: "405",
+    amount: "405"
+  },
+  {
+    id: 4,
+    quantity: 100,
+    price: "2500",
+    amount: "2500"
+  }
+];
 
 const bind_data = () => {
   columns.value = [
