@@ -8,6 +8,8 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\ProyeccionesController;
+use App\Http\Controllers\EmpresasController;
+use App\Http\Controllers\BalanceController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstitutoController;
@@ -17,6 +19,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DireccionController;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\DocumentoController;
+use App\Models\Balance;
 use App\Models\Proyecciones;
 
 /*
@@ -31,19 +34,23 @@ use App\Models\Proyecciones;
 */
 //Rutas de SEGURIDAD
 
+Route::get('/empresa/{eid}', [EmpresasController::class, 'GetEmpresaById']);
+
 Route::get('/ventas/{eid}', [VentasController::class, 'GetAllVentas']);
 
 Route::get('/balance/{eid}', [ComprasController::class, 'GetAllbalanceid']);
-Route::get('/resultado', [ProyeccionesController::class, 'GetLastProyeccion']);
-
 
 Route::get('/compras/all/{eid}', [ComprasController::class, 'GetAllCompras']);
 Route::get('/costos/all/{eid}', [ComprasController::class, 'GetAllCostos']);
 
-
 Route::get('/balances', [ComprasController::class, 'GetAllbalance']);
 
+Route::get('/resultado', [ProyeccionesController::class, 'GetLastProyeccion']);
 
+Route::get('/totalInventario', [BalanceController::class, 'GetInventarioTotal']);
+
+Route::get('/totalCuentasxCobrar', [BalanceController::class, 'GetCuentasxCobrarTotal']);
+Route::get('/totalCuentasxPagar', [BalanceController::class, 'GetCuentasxPagarTotal']);
 
 Route::post('/finanzag', [ComprasController::class, 'GuardarFinanza']);
 Route::post('/GastoOpe', [ComprasController::class, 'GuardarGasto']);
