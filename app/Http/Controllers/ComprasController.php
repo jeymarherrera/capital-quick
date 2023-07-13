@@ -38,6 +38,12 @@ class ComprasController extends Controller
         return Costos::orderBy('id', 'asc')->where('id_balance', $eid)->get();
     }
 
+
+    public function GetCostosOperativos()
+    {
+        return Costos::whereBetween('id', [1, 7])->sum('costo');
+
+    }
     //balance
 
     public function GetAllbalance()

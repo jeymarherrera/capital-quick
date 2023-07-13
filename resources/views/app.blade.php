@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Cork - Vuejs, HTML & Laravel Admin Dashboard Template</title>
+    <title>CapitalQuick - Solución Financiera</title>
 
     <link rel="stylesheet" href="{{ asset(mix('css/app.css')) }}">
     
@@ -18,7 +18,7 @@
 
 <body>
     <noscript>
-        <strong>We're sorry but Cork doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+        <strong>We're sorry but CapitalQuick doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
 
     <div id="app"></div>

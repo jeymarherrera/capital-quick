@@ -23,6 +23,7 @@ use App\Models\Balance;
 use App\Models\Proyecciones;
 use App\Http\Controllers\ActivoFijoController;
 use App\Http\Controllers\PuntoEquilibrioController;
+use App\Models\activosFijos;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,10 @@ Route::get('/balance/{eid}', [ComprasController::class, 'GetAllbalanceid']);
 Route::get('/compras/all/{eid}', [ComprasController::class, 'GetAllCompras']);
 Route::get('/costos/all/{eid}', [ComprasController::class, 'GetAllCostos']);
 
+Route::get('/costosOperativos', [ComprasController::class, 'GetCostosOperativos']);
+Route::get('/costosProduccion', [BalanceController::class, 'GetCostosProduccion']);
+Route::get('/depreciacion', [ActivoFijoController::class, 'GetDepreciacion']);
+
 Route::get('/balances', [ComprasController::class, 'GetAllbalance']);
 
 Route::get('/resultado', [ProyeccionesController::class, 'GetLastProyeccion']);
@@ -53,6 +58,8 @@ Route::get('/totalInventario', [BalanceController::class, 'GetInventarioTotal'])
 
 Route::get('/totalCuentasxCobrar', [BalanceController::class, 'GetCuentasxCobrarTotal']);
 Route::get('/totalCuentasxPagar', [BalanceController::class, 'GetCuentasxPagarTotal']);
+Route::get('/proyeccionFinanciera/{eid}', [ProyeccionesController::class, 'GetProyeccionFinanciera']);
+
 
 Route::post('/finanzag', [ComprasController::class, 'GuardarFinanza']);
 Route::post('/GastoOpe', [ComprasController::class, 'GuardarGasto']);

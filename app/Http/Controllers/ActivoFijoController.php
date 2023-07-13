@@ -51,4 +51,10 @@ class ActivoFijoController extends Controller
             $registroExistente->save();
         }
     }
+
+    public function GetDepreciacion()
+    {
+        return activosFijos::whereBetween('id', [1, 3])->sum('depreciacion_acumulada');
+
+    }
 }
