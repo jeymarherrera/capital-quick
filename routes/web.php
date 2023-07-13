@@ -71,6 +71,7 @@ Route::get('/Valores/mensual/{eid}', [ComprasController::class, 'TotalesMensuale
 Route::get('/Compra/mensual/{eid}', [ComprasController::class, 'TotalesCompras']);
 Route::get('/Gastos/mensual/{eid}', [ComprasController::class, 'TotalesGastos']);
 Route::get('/razones/fina', [ComprasController::class, 'GetAllRazones']);
+Route::post('/totalflujo', [ComprasController::class, 'GuardarTotalflujo']);
 
 
 Route::post('/flujo/balance', [ComprasController::class, 'Guardarflujo']);

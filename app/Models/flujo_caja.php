@@ -19,6 +19,6 @@ class flujo_caja extends Model
         'total_Entrada',
         'flujo_P',
         'cuenta_p1', 'cuenta_p2', 'cuenta_p3',
-        'total_Salida',
+        'total_Salida', 'total_E', 'total_S', 'total_F', 'control'
     ];
 }
