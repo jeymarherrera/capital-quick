@@ -10,8 +10,8 @@ use App\Models\razones;
 use App\Models\gastos;
 
 
-
 use App\Http\Requests\CreateBalanceRequest;
+use App\Http\Requests\CreateTotalRequest;
 use App\Http\Requests\CreatefinanzaRequest;
 use App\Http\Requests\CreateGastoRequest;
 
@@ -42,7 +42,6 @@ class ComprasController extends Controller
     public function GetCostosOperativos()
     {
         return Costos::whereBetween('id', [1, 7])->sum('costo');
-
     }
     //balance
 
@@ -182,11 +181,17 @@ class ComprasController extends Controller
 
     public function TotalesGastos($eid)
     {
-        $totalCostos = DB::table('costos_operativos')
-            ->select(DB::raw('ROUND(COALESCE(SUM(costo), 0), 2) AS total'))
-            ->where('id_balance', '=', $eid)
-            ->first();
-        return response()->json($totalCostos);
+        $Gastomensual = [];
+        for ($mes = 1; $mes <= 12; $mes++) {
+
+            $totalGastos = DB::table('costos_operativos')
+                ->select(DB::raw('ROUND(COALESCE(SUM(costo), 0), 2) AS total'))
+                ->where('id_balance', '=', $eid)
+                ->first();
+
+            $Gastomensual[$mes] = number_format($totalGastos->total, 2);
+        }
+        return response()->json($Gastomensual);
     }
 
 
@@ -235,5 +240,11 @@ class ComprasController extends Controller
             return response()->json(["title" => "Costo Operativo 😁", "mensaje" => "¡Se ha creado nuevo costo !  ✅📆 "], 200);
         }
         return response()->json(["title" => "Aviso ❌", "mensaje" => "Lo siento, ha ocurrido un error. Por favor, verifique los campos e inténtelo de nuevo. ❌📝"], 400);
+    }
+
+    public function GuardarTotalflujo(CreateTotalRequest $request)
+    {
+        flujo_caja::where('id_balance', 1)
+            ->update(['total_F' => $request->totalAnual]);
     }
 }
