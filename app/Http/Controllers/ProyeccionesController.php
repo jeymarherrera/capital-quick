@@ -39,4 +39,15 @@ class ProyeccionesController extends Controller
         }
         return response()->json(["title" => "Aviso ❌", "mensaje" => "Lo siento, ha ocurrido un error. Por favor, verifique los campos e inténtelo de nuevo. ❌📝"], 400);
     }
+
+    public function GetProyeccionFinanciera($eid)
+    {
+        $proyeccion = Proyecciones::find($eid);
+        
+        if ($proyeccion) {
+            return response()->json($proyeccion, 200);
+        } else {
+            return response()->json(['message' => 'No se encontraron datos en la tabla'], 404);
+        }
+    }
 }

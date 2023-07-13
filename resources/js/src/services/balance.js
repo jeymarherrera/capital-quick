@@ -36,3 +36,65 @@ export const ObtenerCuentasxPagarTotal = () => {
   });
 };
 
+export const ObtenerPrestamosCortoPlazo = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("prestamosCP/")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+  };
+
+  export const ObtenerProyeccionFinanciera = (id) => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("proyeccionFinanciera/" + id)
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+  };
+
+
+
+
+  export const ObtenerCostosOperativos = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("costosOperativos/")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+  };
+
+  export const ObtenerDepreciacion = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("depreciacion/")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+  };
+
+  export const ObtenerCostosProduccion = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("costosProduccion/")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+  };

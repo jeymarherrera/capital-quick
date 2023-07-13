@@ -56,11 +56,11 @@
                             </div>
                             <div class="col-sm-6 align-self-center mt-3 text-sm-end">
                               <p class="inv-created-date">
-                                <span class="inv-title">Desde:</span>
+                                <span class="inv-title">Desde: </span>
                                 <span class="inv-date">{{ empresa.desde }}</span>
                               </p>
                               <p class="inv-due-date">
-                                <span class="inv-title">Hasta:</span>
+                                <span class="inv-title">Hasta: </span>
                                 <span class="inv-date">{{empresa.hasta}}</span>
                               </p>
                             </div>
@@ -70,7 +70,7 @@
                         <div class="inv--detail-section inv--customer-detail-section">
                           <div class="row">
                             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4 align-self-center">
-                              <p class="inv-to">ACTIVOS</p>
+                              <p class="inv-to">ACTIVO</p>
                             </div>
 
                             <div
@@ -80,8 +80,8 @@
                             </div>
 
                             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4">
-                              <p class="inv-to" style="text-decoration: underline">Activos Corrientes</p>
-                              <p class="inv-street-addr">Efectivo</p>
+                              <p class="inv-to" style="text-decoration: underline">Activo Corriente</p>
+                              <p class="inv-street-addr">Efectivo en caja</p>
                               <p class="inv-email-address">Cuentas por cobrar</p>
                               <p class="inv-email-address">Inventario</p>
                               <p class="inv-to">Total Activos Corrientes</p>
@@ -114,73 +114,6 @@
                                   <span
                                     style="color:black; font-weight: bold;"
                                   >{{cuentaxCobrar + totalInventario}}</span>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="inv--detail-section inv--customer-detail-section">
-                          <div class="row">
-                            <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4 align-self-center">
-                    
-                            </div>
-
-                            <div
-                              class="col-xl-4 col-lg-5 col-md-6 col-sm-8 align-self-center order-sm-0 order-1 inv--payment-info"
-                            >
-                              <h6 class="inv-title"></h6>
-                            </div>
-
-                           
-                            <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4">
-                              <p class="inv-to" style="text-decoration: underline">Activos No Corrientes</p>
-                              <p class="inv-street-addr">Mobiliario</p>
-                              <p class="inv-email-address">Equipos de oficina</p>
-                              <p class="inv-email-address">Vehículo</p>
-                              <p class="inv-email-address">Depreciacion Acumulada (10%)</p>
-                              <p class="inv-to">Total Activos No Corrientes</p>
-                              <p class="inv-to">Total Activos</p>
-                            </div>
-
-                            <div
-                              class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12 order-sm-0 order-1"
-                            >
-                              <div class="inv--payment-info">
-                                <p>
-                                  <span class="inv-subtitle"></span>
-                                  <br />
-                                  <br />
-                                  <span></span>
-                                </p>
-                                <p>
-                                  <span class="inv-subtitle"></span>
-                                  <span>{{empresa.activo1}}</span>
-                                </p>
-                                <p>
-                                  <span class="inv-subtitle"></span>
-                                  <span>{{empresa.activo2}}</span>
-                                </p>
-                                <p>
-                                  <span class="inv-subtitle"></span>
-                                  <span>{{empresa.activo3}}</span>
-                                </p>
-                                <p>
-                                  <span class="inv-subtitle"></span>
-                                  <span>{{(empresa.activo1 + empresa.activo2 + empresa.activo3) * empresa.depreciacion_anual}}</span>
-                                </p>
-                                <p>
-                                  <span class="inv-subtitle"></span>
-                                  <span
-                                    style="color:black; font-weight: bold;"
-                                  >{{empresa.activo1 + empresa.activo2 + empresa.activo3 - ((empresa.activo1 + empresa.activo2 + empresa.activo3) * empresa.depreciacion_anual)}}</span>
-                                </p>
-                                <br>
-                                <p>
-                                  <span class="inv-to"></span>
-                                  <span
-                                    style="color:black; font-weight: bold;"
-                                  >{{(cuentaxCobrar + totalInventario) + empresa.activo1 + empresa.activo2 + empresa.activo3 + ((empresa.activo1 + empresa.activo2 + empresa.activo3) * empresa.depreciacion_anual)}}</span>
                                 </p>
                               </div>
                             </div>
@@ -226,17 +159,15 @@
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{cortoPlazo}}</span>
+                                  <span>000000.00</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{largoPlazo}}</span>
+                                  <span>000000.00</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span
-                                    style="color:black; font-weight: bold;"
-                                  >{{cuentaxPagar + cortoPlazo + largoPlazo}}</span>
+                                  <span>{{cuentaxPagar}}</span>
                                 </p>
                               </div>
                             </div>
@@ -270,11 +201,11 @@
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{(cuentaxCobrar + totalInventario) - (cuentaxPagar + cortoPlazo + largoPlazo)}}</span>
+                                  <span>000000.00</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span style="color:black; font-weight: bold;">{{(cuentaxCobrar + totalInventario) - (cuentaxPagar + cortoPlazo + largoPlazo)}}</span>
+                                  <span>0000000.00</span>
                                 </p>
                               </div>
                             </div>
@@ -300,7 +231,7 @@
                 <div class="invoice-action-btn">
                   <div class="row">
                     <div class="col-xl-12 col-md-3 col-sm-6">
-                      <a href="javascript:;" class="btn btn-primary btn-send">Proforma</a>
+                      <a href="javascript:;" class="btn btn-primary btn-send">Enviar</a>
                     </div>
                     <div class="col-xl-12 col-md-3 col-sm-6">
                       <a
@@ -340,9 +271,6 @@ export default {
       totalInventario: 0,
       cuentaxCobrar: 0,
       cuentaxPagar: 0,
-      proyeccionFinanciera: 0,
-      cortoPlazo: 0,
-      largoPlazo: 0
     };
   },
   methods: {
@@ -353,7 +281,6 @@ export default {
           this.empresa = empresaData;
           console.log(this.empresa);
           this.obtenerCuentasxCobrarTotal();
-          this.obtenerProyeccionFinancieraById(this.empresa.id_proyeccion);
         })
         .catch(err => {
           console.log(err);
@@ -364,7 +291,6 @@ export default {
       BalanceService.ObtenerCuentasxCobrarTotal()
         .then(CCData => {
           this.cuentaxCobrar = parseFloat(CCData);
-          console.log(this.cuentaxCobrar);
           this.obtenerInventarioTotal();
         })
         .catch(err => {
@@ -376,7 +302,6 @@ export default {
       BalanceService.ObtenerInventarioTotal()
         .then(inventarioData => {
           this.totalInventario = parseFloat(inventarioData);
-          console.log(this.totalInventario);
           this.obtenerCuentasxPagarTotal();
         })
         .catch(err => {
@@ -394,24 +319,6 @@ export default {
           console.log(err);
         });
     },
-    obtenerProyeccionFinancieraById(id) {
-      msg.toastr("Cargando datos, por favor espere...", "info");
-      BalanceService.ObtenerProyeccionFinanciera(id)
-        .then(PFData => {
-          this.proyeccionFinanciera = PFData;
-          console.log(PFData);
-
-          this.cortoPlazo =
-            this.proyeccionFinanciera.totalPagarMensual * this.empresa.meses_cp;
-          this.largoPlazo =
-            this.proyeccionFinanciera.totalPagarMensual * this.empresa.meses_lp;
-          console.log(this.cortoPlazo);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-
     print() {
       window.print();
     }
