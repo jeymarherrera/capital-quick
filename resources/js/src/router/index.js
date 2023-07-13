@@ -43,7 +43,18 @@ const routes = [
         component: () => import(/* webpackChunkName: "index2" */ '../views/estado_detalles.vue'),
     },
 
-   
+
+
+    //calcular activos fijos
+
+    {
+        path: '/activos_fijos',
+        name: 'activos fijos',
+        component: () => import(/* webpackChunkName: "index2" */ '../views/activosfijos.vue'),
+    },
+
+
+
 
     //components
     {

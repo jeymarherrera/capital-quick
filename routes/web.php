@@ -21,6 +21,8 @@ use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\DocumentoController;
 use App\Models\Balance;
 use App\Models\Proyecciones;
+use App\Http\Controllers\ActivoFijoController;
+use App\Http\Controllers\PuntoEquilibrioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +67,10 @@ Route::get('/razones/fina', [ComprasController::class, 'GetAllRazones']);
 
 
 Route::post('/flujo/balance', [ComprasController::class, 'Guardarflujo']);
+
+
+Route::get('/activos/fijos', [ActivoFijoController::class, 'obtenerActivos']);
+Route::get('/puntoequilibrio', [PuntoEquilibrioController::class, 'calcularPuntoEquilibrio']);
 
 
 
