@@ -38,6 +38,7 @@ use App\Models\activosFijos;
 //Rutas de SEGURIDAD
 
 Route::get('/empresa/{eid}', [EmpresasController::class, 'GetEmpresaById']);
+Route::put('/impuesto/{eid}/editar/', [BalanceController::class, 'GuardarImpuesto']);
 
 Route::get('/ventas/{eid}', [VentasController::class, 'GetAllVentas']);
 Route::get('/ventasTotal', [VentasController::class, 'GetVentas']);
@@ -73,6 +74,11 @@ Route::get('/Valores/mensual/{eid}', [ComprasController::class, 'TotalesMensuale
 Route::get('/Compra/mensual/{eid}', [ComprasController::class, 'TotalesCompras']);
 Route::get('/Gastos/mensual/{eid}', [ComprasController::class, 'TotalesGastos']);
 Route::get('/razones/fina', [ComprasController::class, 'GetAllRazones']);
+Route::get('/proforma/AB', [ComprasController::class, 'GetProformaAB']);
+Route::get('/proforma/PB', [ComprasController::class, 'GetProformaPB']);
+Route::get('/proforma/CB', [ComprasController::class, 'GetProformaCB']);
+Route::get('/proforma/APE', [ComprasController::class, 'GetProformaAPE']);
+
 Route::post('/totalflujo', [ComprasController::class, 'GuardarTotalflujo']);
 
 

@@ -166,3 +166,52 @@ export const GuardarFlujoFinal = (flujo) => {
             });
     });
 };
+
+//proformasss
+export const ObtenerProformaAB = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("proforma/AB")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};
+
+export const ObtenerProformaPB = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("proforma/PB")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};
+
+export const ObtenerProformaCB = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("proforma/CB")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};
+
+export const ObtenerProformaAPE = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("proforma/APE")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};

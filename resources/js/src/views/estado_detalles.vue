@@ -10,7 +10,7 @@
                   <a href="javascript:;">Estado de Resultados</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  <span></span>
+                  <span>Detalles</span>
                 </li>
               </ol>
             </nav>
@@ -217,8 +217,12 @@
                 <div class="invoice-action-btn">
                   <div class="row">
                     <div class="col-xl-12 col-md-3 col-sm-6">
-                      <a href="javascript:;" class="btn btn-primary btn-send">Proforma</a>
+                      <a :href="`/proforma/${empresa.id}/estado`" class="btn btn-primary btn-send">Proforma</a>
                     </div>
+                    <div class="col-xl-12 col-md-3 col-sm-6" style="margin-bottom:15px">
+                     <a :href="`/impuesto/${empresa.id}/editar`" class="btn btn-dark btn-edit">Editar Impuesto</a>
+                    </div>
+     
                     <div class="col-xl-12 col-md-3 col-sm-6">
                       <a
                         href="javascript:;"

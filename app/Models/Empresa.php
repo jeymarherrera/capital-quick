@@ -12,6 +12,6 @@ class Empresa extends Model
     protected $table = 'empresa_detalles';
 
     protected $fillable = [
-        'correo', 'contrasena', 'nombre', 'direccion', 'telefono', 'hasta', 'desde'
+        'correo', 'contrasena', 'nombre', 'direccion', 'telefono', 'hasta', 'desde', 'impuesto'
     ];
 }

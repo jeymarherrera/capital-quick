@@ -95,6 +95,22 @@ const routes = [
         component: () => import(/* webpackChunkName: "components-sweetalert" */ '../views/components/SelectFinanza.vue'),
     },
 
+    {
+        path: '/impuesto/:id/editar',
+        name: 'Impuesto',
+        component: () => import(/* webpackChunkName: "components-counter" */ '../views/impuesto.vue'),
+    },
+    {
+        path: '/proforma/:id/balance',
+        name: 'IProforma Balance',
+        component: () => import(/* webpackChunkName: "components-counter" */ '../views/proforma_balance.vue'),
+    },
+    {
+        path: '/proforma/:id/estado',
+        name: 'Proforma Estado',
+        component: () => import(/* webpackChunkName: "components-counter" */ '../views/proforma_estado.vue'),
+    },
+
     //balance
    
     {
