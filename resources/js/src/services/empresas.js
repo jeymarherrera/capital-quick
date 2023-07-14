@@ -11,3 +11,16 @@ export const ObtenerEmpresa = (id) => {
             });
     });
 };
+
+export const GuardarImpuesto = (id, impuesto) => {
+    console.log(id, impuesto);
+    return new Promise(async (resolve) => {
+        return ApiService.put("/impuesto/" + id + "/editar/" + impuesto)
+            .then((response) => {
+                resolve(response);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compras;
+use App\Models\Empresa;
 use App\Models\Inventarios;
 use App\Models\Ventas;
 use App\Models\flujo_caja;

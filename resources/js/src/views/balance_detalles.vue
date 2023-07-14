@@ -7,7 +7,7 @@
             <nav class="breadcrumb-one" aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="javascript:;">Balance General</a>
+                  <a href="javascript:;">Balance General / Detalles</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   <span></span>
@@ -300,7 +300,7 @@
                 <div class="invoice-action-btn">
                   <div class="row">
                     <div class="col-xl-12 col-md-3 col-sm-6">
-                      <a href="javascript:;" class="btn btn-primary btn-send">Proforma</a>
+                      <a :href="`/proforma/${empresa.id}/balance`"  class="btn btn-primary btn-send">Proforma</a>
                     </div>
                     <div class="col-xl-12 col-md-3 col-sm-6">
                       <a

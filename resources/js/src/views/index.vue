@@ -51,7 +51,7 @@
 
           <div class="widget-content">
             <div class="chart-title">
-              Ganancia Total <span class="text-primary ms-1">$10,840</span>
+              Ganancia Total <span class="text-primary ms-1">$92,061.03</span>
             </div>
             <apex-chart
               v-if="revenue_options"
@@ -196,7 +196,7 @@
               <div class="w-summary-details">
                 <div class="w-summary-info">
                   <h6>Ingresos</h6>
-                  <p class="summary-count">$92,600</p>
+                  <p class="summary-count">$109,096.55</p>
                 </div>
                 <div class="w-summary-stats">
                   <div class="progress">
@@ -204,9 +204,9 @@
                       role="progressbar"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                      aria-valuenow="90"
+                      aria-valuenow="70"
                       class="progress-bar bg-gradient-secondary"
-                      style="width: 90%"
+                      style="width: 70%"
                     ></div>
                   </div>
                 </div>
@@ -236,7 +236,7 @@
               <div class="w-summary-details">
                 <div class="w-summary-info">
                   <h6>Ganancias</h6>
-                  <p class="summary-count">$37,515</p>
+                  <p class="summary-count">$92,061.03</p>
                 </div>
                 <div class="w-summary-stats">
                   <div class="progress">
@@ -274,7 +274,7 @@
               <div class="w-summary-details">
                 <div class="w-summary-info">
                   <h6>Costos</h6>
-                  <p class="summary-count">$55,085</p>
+                  <p class="summary-count">$1,076,109.00</p>
                 </div>
                 <div class="w-summary-stats">
                   <div class="progress">
@@ -318,9 +318,9 @@
               </svg>
             </div>
             <div>
-              <div class="w-value">3,192</div>
+              <div class="w-value">1,056,692.00</div>
               <div class="w-numeric-title">
-                Total de Productos en Inventario
+                Total de Inventario
               </div>
             </div>
           </div>

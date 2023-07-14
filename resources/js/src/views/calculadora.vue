@@ -251,7 +251,7 @@
             </div>
 
             <!-- mostrar info -->
-            <div class="col-xl-6">
+            <div class="col-xl-6" v-if="mostrarTexto">
               <div class="invoice-container">
                 <div class="invoice-inbox">
                   <div id="ct" class>
@@ -260,7 +260,7 @@
                         <div class="inv--head-section inv--detail-section">
                           <div class="row">
                             <div class="col-sm-12 col-12 me-auto">
-                              <h2 for="currency" style="text-align:center">Resultado Obtenido</h2>
+                              <h2 for="currency" style="text-align:center" v-if="mostrarTexto">Resultado Obtenido</h2>
                             </div>
                           </div>
                         </div>
@@ -268,7 +268,7 @@
                         <div class="inv--detail-section inv--customer-detail-section">
                           <div class="row">
                             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4 align-self-center">
-                              <p class="inv-to">Para esta inversión usted deberá pagar lo siguente:</p>
+                              <p class="inv-to" v-if="mostrarTexto">Para esta inversión usted deberá pagar MENSUALMENTE lo siguente:</p>
                             </div>
                           </div>
                         </div>
@@ -288,9 +288,9 @@
                               <tbody>
                                 <tr v-for="item in items" :key="item.id">
                                   <td>{{ item.id }}</td>
-                                  <td>${{ item.quantity }}</td>
-                                  <td class="text-end">${{ item.price }}</td>
-                                  <td class="text-end">${{ item.amount }}</td>
+                                  <td>B/.{{ item.quantity }}</td>
+                                  <td class="text-end">B/.{{ item.price }}</td>
+                                  <td class="text-end">B/.{{ item.amount }}</td>
                                 </tr>
                               </tbody>
                             </table>
@@ -304,26 +304,26 @@
                               <div class="text-sm-end">
                                 <div class="row">
                                   <div class="col-sm-8 col-7">
-                                    <p class>Sub Total:</p>
+                                    <p class v-if="mostrarTexto">Sub Total:</p>
                                   </div>
                                   <div class="col-sm-4 col-5">
                                     <p
-                                      class
-                                    >${{proyeccion.capitalMensual*proyeccion.cantidadTiempo}}</p>
+                                      class v-if="mostrarTexto"
+                                    >B/.{{(proyeccion.capitalMensual*proyeccion.cantidadTiempo).toFixed(2)}}</p>
                                   </div>
                                   <div class="col-sm-8 col-7">
-                                    <p class>Interés:</p>
+                                    <p class v-if="mostrarTexto">Interés:</p>
                                   </div>
                                   <div class="col-sm-4 col-5">
                                     <p
-                                      class
-                                    >${{proyeccion.interesMensual*proyeccion.cantidadTiempo}}</p>
+                                      class v-if="mostrarTexto"
+                                    >B/.{{(proyeccion.interesMensual*proyeccion.cantidadTiempo).toFixed(2)}}</p>
                                   </div>
                                   <div class="col-sm-8 col-7 grand-total-title">
-                                    <h4 class>Total a Pagar:</h4>
+                                    <h4 class v-if="mostrarTexto">Total a Pagar:</h4>
                                   </div>
                                   <div class="col-sm-4 col-5 grand-total-amount">
-                                    <h4 class>${{proyeccion.totalPagar}}</h4>
+                                    <h4 class v-if="mostrarTexto">B/.{{(totalPagar)}}</h4>
                                   </div>
                                 </div>
                               </div>
@@ -335,7 +335,7 @@
                           <div class="invoice-action-btn">
                             <div class="row">
                               <div class="col-xl-12 col-md-4">
-                                <a class="btn btn-dark btn-preview">Anexar a mi Estado Financiero</a>
+                                <a class="btn btn-dark btn-preview" v-if="mostrarTexto">Anexar a mi Estado Financiero</a>
                               </div>
                             </div>
                           </div>
@@ -464,29 +464,55 @@ function guardarProyeccion(datos) {
 }
 
 const proyeccion = ref([]);
+const items = ref([]);
+const totalPagar = ref([]);
+const mostrarTexto = ref(false);
 const obtenerProyeccion = () => {
-  msg.toastr("Realizando calculo, por favor espere...", "info");
+  msg.toastr("Realizando cálculo, por favor espere...", "info");
   ProyeccionService.ObtenerProyeccion()
     .then(proyeccionData => {
       proyeccion.value = proyeccionData;
+      totalPagar.value = (proyeccion.value.totalPagar).toFixed(2);
+      bind_data();
+      mostrar();
     })
     .catch(err => {
       console.log(err);
     });
 };
 
-const items = [];
+const mostrar = () => {
+  mostrarTexto.value = true;
+};
 
-for (let i = 0; i < proyeccion.cantidadTiempo; i++) {
-  items.push({
-    id: i + 1,
-    quantity: proyeccion.capitalMensual.toFixed(2),
-    price: proyeccion.interesMensual.toFixed(2),
-    amount: proyeccion.totalPagar.toFixed(2)
-  });
-}
+const bind_data = () => {
+  const cantidadTiempo = proyeccion.value.cantidadTiempo;
+    const capitalMensual = proyeccion.value.capitalMensual;
+    const interesMensual = proyeccion.value.interesMensual;
+    const totalPagarMensual = proyeccion.value.totalPagarMensual;
+    
+   
+    // console.log(proyeccion.value.capitalMensual);
+    // console.log(capitalMensual);
+  columns.value = [
+    { key: "id", label: "Total Meses" },
+    { key: "quantity", label: "Capital Mensual" },
+    { key: "price", label: "Intereses Mensual", class: "text-end" },
+    { key: "amount", label: "Total A Pagar Mensual", class: "text-end" }
+  ];
+  items.value = [
+    {
+      id: cantidadTiempo,
+      quantity: (capitalMensual).toFixed(2),
+      price: (interesMensual).toFixed(2),
+      amount: (totalPagarMensual).toFixed(2)
+    },
+  ];
+};
 
-items.value = items;
+
+
+
 
 onMounted(() => {
   //currency list
@@ -515,15 +541,8 @@ onMounted(() => {
     { key: "Mensualmente", value: 12 },
     { key: "Diariamente", value: 30 }
   ];
-  bind_data();
+ 
 });
 
-const bind_data = () => {
-  columns.value = [
-    { key: "id", label: "Mes" },
-    { key: "quantity", label: "Monto" },
-    { key: "price", label: "Interes", class: "text-end" },
-    { key: "amount", label: "Total", class: "text-end" }
-  ];
-};
+
 </script>

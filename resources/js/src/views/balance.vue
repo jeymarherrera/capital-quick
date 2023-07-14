@@ -22,8 +22,8 @@
           <div class="widget-heading">
             <div class="media">
               <div class="media-aside align-self-start">
-                <div class="w-img">
-                  <img src="@/assets/images/g-8.png" alt="avatar" />
+                <div class="w-img" style="color:darkblue">
+                  <img src="@/assets/images/logo.svg" alt="avatar" />
                 </div>
               </div>
               <div class="media-body">
@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="widget-content">
-            <h5 style="color: red">Año Anterior</h5>
+            <h5>Año Actual</h5>
             <a href="/balance_detalles" class="btn btn-secondary"
               >Ver Detalles</a
             >
@@ -49,7 +49,7 @@
             <div class="media">
               <div class="media-aside align-self-start">
                 <div class="w-img">
-                  <img src="@/assets/images/g-8.png" alt="avatar" />
+                  <img src="@/assets/images/logo.svg" alt="avatar" />
                 </div>
               </div>
               <div class="media-body">
@@ -61,7 +61,7 @@
             </div>
           </div>
           <div class="widget-content">
-            <h5>Año Actual</h5>
+            <h5>Año Próximo</h5>
             <a href="javascript:;" class="btn btn-secondary">Ver Detalles</a>
           </div>
         </div>

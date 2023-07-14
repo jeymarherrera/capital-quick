@@ -87,9 +87,9 @@ export default {
     getYearText() {
       return (balance) => {
         if (this.isYearPrevious(balance)) {
-          return "Año Anterior";
-        } else if (this.isYearCurrent(balance)) {
           return "Año Actual";
+        } else if (this.isYearCurrent(balance)) {
+          return "Año Próximo";
         }
         return "";
       };

@@ -202,6 +202,32 @@ class ComprasController extends Controller
             ->get();
     }
 
+    public function GetProformaAB()
+    {
+        return DB::table('proforma_AB')
+        ->orderBy('id', 'asc')
+        ->get();
+    }
+
+    public function GetProformaPB()
+    {
+        return DB::table('proforma_PB')
+        ->orderBy('id', 'asc')
+            ->get();
+    }
+    public function GetProformaCB()
+    {
+        return DB::table('proforma_CB')
+        ->orderBy('id', 'asc')
+            ->get();
+    }
+    public function GetProformaAPE()
+    {
+        return DB::table('proforma_APE')
+        ->orderBy('id', 'asc')
+            ->get();
+    }
+
     public function GuardarFinanza(CreatefinanzaRequest $request)
     {
         $razon = $request->nombre;
