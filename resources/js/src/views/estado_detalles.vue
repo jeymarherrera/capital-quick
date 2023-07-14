@@ -80,19 +80,34 @@
                             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4">
                               <p class="inv-street-addr">Ventas</p>
                               <p class="inv-email-address">Costos de Bienes Vendidos</p>
-                              <p class="inv-email-address" style="color:black; font-weight: bold;">Utilidad Bruta</p>
-                              <br>
-                              <p class="inv-email-address" style="color:black; font-weight: bold;">Gastos Operativos</p>
+                              <p
+                                class="inv-email-address"
+                                style="color:black; font-weight: bold;"
+                              >Utilidad Bruta</p>
+                              <br />
+                              <p
+                                class="inv-email-address"
+                                style="color:black; font-weight: bold;"
+                              >Gastos Operativos</p>
                               <p class="inv-street-addr">- Costos Operativos</p>
                               <p class="inv-email-address">- Depreciacion</p>
                               <p class="inv-email-address">- Costos por producción</p>
-                              <p class="inv-email-address" style="color:black; font-weight: bold;">    Gastos Operativos Totales</p>
-                              <br>
-                              <p class="inv-email-address" style="color:black; font-weight: bold;">Utilidad Operativa</p>
-                              <p class="inv-street-addr">Gastos por Interes</p>
-                              <p class="inv-email-address" style="color:black; font-weight: bold;">Utilidad Antes de Impuestos</p>
+                              <p
+                                class="inv-email-address"
+                                style="color:black; font-weight: bold;"
+                              >Gastos Operativos Totales</p>
+                              <br />
+                              <p
+                                class="inv-email-address"
+                                style="color:black; font-weight: bold;"
+                              >Utilidad Operativa</p>
+                              <p class="inv-street-addr">Gastos por Interés</p>
+                              <p
+                                class="inv-email-address"
+                                style="color:black; font-weight: bold;"
+                              >Utilidad Antes de Impuestos</p>
                               <p class="inv-street-addr">Impuestos</p>
-                              <p class="inv-to">Utilidad despues de Impuestos</p>
+                              <p class="inv-to">Utilidad después de Impuestos</p>
                             </div>
 
                             <div
@@ -105,23 +120,24 @@
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>000000.00</span>
+                                  <span>{{(ventas).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{cuentaxCobrar}}</span>
+                                  <span>{{(totalInventario).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span style="color:black; font-weight: bold;">{{totalInventario}}</span>
-                                </p>
-                                <br>
-                                <br>
-                                <p>
-                                  <span class="inv-subtitle"></span>
-                                  <br>
                                   <span
-                                  >   </span>
+                                    style="color:black; font-weight: bold;"
+                                  >{{(ventas -totalInventario).toFixed(2)}}</span>
+                                </p>
+                                <br />
+                                <br />
+                                <p>
+                                  <span class="inv-subtitle"></span>
+                                  <br />
+                                  <span></span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
@@ -129,49 +145,53 @@
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{costosOperativos}}</span>
+                                  <span>{{(costosOperativos).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{depreciacion}}</span>
+                                  <span>{{(depreciacion).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{costosProduccion}}</span>
+                                  <span>{{(costosProduccion).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
                                   <span
                                     style="color:black; font-weight: bold;"
-                                  >{{costosOperativos + depreciacion + costosProduccion}}</span>
+                                  >{{(costosOperativos + depreciacion + costosProduccion).toFixed(2)}}</span>
                                 </p>
 
                                 <p>
                                   <span class="inv-subtitle"></span>
                                   <span></span>
                                 </p>
-                                <br>
+                                <br />
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span style="color:black; font-weight: bold;">000000.00</span>
+                                  <span
+                                    style="color:black; font-weight: bold;"
+                                  >{{((ventas - totalInventario) + (costosOperativos + depreciacion + costosProduccion)).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{cuentaxCobrar}}</span>
-                                </p>
-                                <p>
-                                  <span class="inv-subtitle"></span>
-                                  <span style="color:black; font-weight: bold;">{{totalInventario}}</span>
-                                </p>
-                                <p>
-                                  <span class="inv-subtitle"></span>
-                                  <span>{{totalInventario}}</span>
+                                  <span>{{(interes).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
                                   <span
                                     style="color:black; font-weight: bold;"
-                                  >{{cuentaxCobrar + totalInventario}}</span>
+                                  >{{(((ventas - totalInventario) + (costosOperativos + depreciacion + costosProduccion)) - interes).toFixed(2)}}</span>
+                                </p>
+                                <p>
+                                  <span class="inv-subtitle"></span>
+                                  <span>{{((((ventas - totalInventario) + (costosOperativos + depreciacion + costosProduccion)) - interes) * empresa.impuesto).toFixed(2)}}</span>
+                                </p>
+                                <p>
+                                  <span class="inv-subtitle"></span>
+                                  <span
+                                    style="color:black; font-weight: bold;"
+                                  >{{ ((((ventas - totalInventario) + (costosOperativos + depreciacion + costosProduccion)) - interes) -((((ventas - totalInventario) + (costosOperativos + depreciacion + costosProduccion)) - interes) * empresa.impuesto)).toFixed(2)}}</span>
                                 </p>
                               </div>
                             </div>
@@ -228,6 +248,7 @@ import "@/assets/sass/apps/invoice-preview.scss";
 
 import * as EmpresasService from "@/services/empresas";
 import * as BalanceService from "@/services/balance";
+import * as VentasService from "@/services/ventas";
 import * as msg from "@/helpers/mensajes";
 
 export default {
@@ -237,8 +258,10 @@ export default {
       costosOperativos: 0,
       depreciacion: 0,
       costosProduccion: 0,
-
+      ventas: 0,
       totalInventario: 0,
+      interes: 0,
+
       cuentaxCobrar: 0,
       cuentaxPagar: 0,
       proyeccionFinanciera: 0,
@@ -253,18 +276,19 @@ export default {
         .then(empresaData => {
           this.empresa = empresaData;
           console.log(this.empresa);
-          this.obtenerCostosOperativos()
+          this.obtenerVentas();
+          this.obtenerProyeccionFinancieraById(this.empresa.id_proyeccion);
         })
         .catch(err => {
           console.log(err);
         });
     },
-    obtenerCuentasxCobrarTotal() {
+    obtenerVentas() {
       msg.toastr("Cargando datos, por favor espere...", "info");
-      BalanceService.ObtenerCuentasxCobrarTotal()
-        .then(CCData => {
-          this.cuentaxCobrar = parseFloat(CCData);
-          console.log(this.cuentaxCobrar);
+      VentasService.ObtenerVentas()
+        .then(VentasData => {
+          this.ventas = parseFloat(VentasData);
+          console.log(this.ventas);
           this.obtenerInventarioTotal();
         })
         .catch(err => {
@@ -277,51 +301,19 @@ export default {
         .then(inventarioData => {
           this.totalInventario = parseFloat(inventarioData);
           console.log(this.totalInventario);
-          this.obtenerCuentasxPagarTotal();
+          this.obtenerCostosOperativos();
         })
         .catch(err => {
           console.log(err);
         });
     },
-    obtenerCuentasxPagarTotal() {
-      msg.toastr("Cargando datos, por favor espere...", "info");
-      BalanceService.ObtenerCuentasxPagarTotal()
-        .then(CPData => {
-          this.cuentaxPagar = parseFloat(CPData);
-          console.log(this.cuentaxPagar);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-    obtenerProyeccionFinancieraById(id) {
-      msg.toastr("Cargando datos, por favor espere...", "info");
-      BalanceService.ObtenerProyeccionFinanciera(id)
-        .then(PFData => {
-          this.proyeccionFinanciera = PFData;
-          console.log(PFData);
-
-          this.cortoPlazo =
-            this.proyeccionFinanciera.totalPagarMensual * this.empresa.meses_cp;
-          this.largoPlazo =
-            this.proyeccionFinanciera.totalPagarMensual * this.empresa.meses_lp;
-          console.log(this.cortoPlazo);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-
-
-
     obtenerCostosOperativos() {
       msg.toastr("Cargando datos, por favor espere...", "info");
       BalanceService.ObtenerCostosOperativos()
         .then(CostosOperativosData => {
-          this.costosOperativos = CostosOperativosData;
+          this.costosOperativos = parseFloat(CostosOperativosData);
           console.log(this.costosOperativos);
-          this.obtenerDepreciacion()
-          
+          this.obtenerDepreciacion();
         })
         .catch(err => {
           console.log(err);
@@ -331,7 +323,7 @@ export default {
       msg.toastr("Cargando datos, por favor espere...", "info");
       BalanceService.ObtenerDepreciacion()
         .then(DepreciacionData => {
-          this.depreciacion = DepreciacionData;
+          this.depreciacion = parseFloat(DepreciacionData);
           console.log(this.depreciacion);
           this.obtenerCostosProduccion();
         })
@@ -343,8 +335,23 @@ export default {
       msg.toastr("Cargando datos, por favor espere...", "info");
       BalanceService.ObtenerCostosProduccion()
         .then(CostosProduccionData => {
-          this.costosProduccion = CostosProduccionData;
+          this.costosProduccion = parseFloat(CostosProduccionData);
           console.log(this.costosProduccion);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    obtenerProyeccionFinancieraById(id) {
+      msg.toastr("Cargando datos, por favor espere...", "info");
+      BalanceService.ObtenerProyeccionFinanciera(id)
+        .then(PFData => {
+          this.proyeccionFinanciera = PFData;
+          console.log(PFData);
+          this.interes = parseFloat(
+            this.proyeccionFinanciera.interesMensual * this.empresa.meses_lp
+          );
+          console.log(this.interes.toFixed(2));
         })
         .catch(err => {
           console.log(err);

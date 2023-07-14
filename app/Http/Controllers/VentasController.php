@@ -16,4 +16,9 @@ class VentasController extends Controller
             ->where('ventas_anuales.id_balance', $eid)
             ->get();
     }
+
+    public function GetVentas()
+    {
+        return Ventas::whereYear('fecha', 2022)->sum('monto');
+    }
 }
