@@ -99,21 +99,21 @@
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>000000.00</span>
+                                  <span>{{(efectivoTotal).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{cuentaxCobrar}}</span>
+                                  <span>{{(cuentaxCobrar).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{totalInventario}}</span>
+                                  <span>{{(totalInventario).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
                                   <span
                                     style="color:black; font-weight: bold;"
-                                  >{{cuentaxCobrar + totalInventario}}</span>
+                                  >{{(efectivoTotal + cuentaxCobrar + totalInventario).toFixed(2)}}</span>
                                 </p>
                               </div>
                             </div>
@@ -167,20 +167,20 @@
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{(empresa.activo1 + empresa.activo2 + empresa.activo3) * empresa.depreciacion_anual}}</span>
+                                  <span>{{ (depreciacion).toFixed(2) }}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
                                   <span
                                     style="color:black; font-weight: bold;"
-                                  >{{empresa.activo1 + empresa.activo2 + empresa.activo3 - ((empresa.activo1 + empresa.activo2 + empresa.activo3) * empresa.depreciacion_anual)}}</span>
+                                  >{{empresa.activo1 + empresa.activo2 + empresa.activo3 - depreciacion}}</span>
                                 </p>
                                 <br>
                                 <p>
                                   <span class="inv-to"></span>
                                   <span
                                     style="color:black; font-weight: bold;"
-                                  >{{(cuentaxCobrar + totalInventario) + empresa.activo1 + empresa.activo2 + empresa.activo3 + ((empresa.activo1 + empresa.activo2 + empresa.activo3) * empresa.depreciacion_anual)}}</span>
+                                  >{{(efectivoTotal + cuentaxCobrar + totalInventario) + ((empresa.activo1 + empresa.activo2 + empresa.activo3) - depreciacion)}}</span>
                                 </p>
                               </div>
                             </div>
@@ -222,21 +222,21 @@
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{cuentaxPagar}}</span>
+                                  <span>{{(cuentaxPagar).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{cortoPlazo}}</span>
+                                  <span>{{(cortoPlazo).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{largoPlazo}}</span>
+                                  <span>{{(largoPlazo).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
                                   <span
                                     style="color:black; font-weight: bold;"
-                                  >{{cuentaxPagar + cortoPlazo + largoPlazo}}</span>
+                                  >{{(cuentaxPagar + cortoPlazo + largoPlazo).toFixed(2)}}</span>
                                 </p>
                               </div>
                             </div>
@@ -270,11 +270,11 @@
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span>{{(cuentaxCobrar + totalInventario) - (cuentaxPagar + cortoPlazo + largoPlazo)}}</span>
+                                  <span>{{((efectivoTotal+ cuentaxCobrar + totalInventario) - (cuentaxPagar + cortoPlazo + largoPlazo)).toFixed(2)}}</span>
                                 </p>
                                 <p>
                                   <span class="inv-subtitle"></span>
-                                  <span style="color:black; font-weight: bold;">{{(cuentaxCobrar + totalInventario) - (cuentaxPagar + cortoPlazo + largoPlazo)}}</span>
+                                  <span style="color:black; font-weight: bold;">{{((efectivoTotal + cuentaxCobrar + totalInventario) - (cuentaxPagar + cortoPlazo + largoPlazo)).toFixed(2)}}</span>
                                 </p>
                               </div>
                             </div>
@@ -342,7 +342,9 @@ export default {
       cuentaxPagar: 0,
       proyeccionFinanciera: 0,
       cortoPlazo: 0,
-      largoPlazo: 0
+      largoPlazo: 0,
+      depreciacion: 0,
+      efectivoTotal: 0
     };
   },
   methods: {
@@ -352,8 +354,20 @@ export default {
         .then(empresaData => {
           this.empresa = empresaData;
           console.log(this.empresa);
-          this.obtenerCuentasxCobrarTotal();
+          this.obtenerEfectivoTotal();
           this.obtenerProyeccionFinancieraById(this.empresa.id_proyeccion);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    obtenerEfectivoTotal() {
+      msg.toastr("Cargando datos, por favor espere...", "info");
+      BalanceService.ObtenerEfectivoTotal()
+        .then(ETData => {
+          this.efectivoTotal = parseFloat(ETData);
+          console.log(this.efectivoTotal);
+          this.obtenerCuentasxCobrarTotal();
         })
         .catch(err => {
           console.log(err);
@@ -405,7 +419,19 @@ export default {
             this.proyeccionFinanciera.totalPagarMensual * this.empresa.meses_cp;
           this.largoPlazo =
             this.proyeccionFinanciera.totalPagarMensual * this.empresa.meses_lp;
+            this.obtenerDepreciacion();
           console.log(this.cortoPlazo);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    obtenerDepreciacion() {
+      msg.toastr("Cargando datos, por favor espere...", "info");
+      BalanceService.ObtenerDepreciacion()
+        .then(DepreciacionData => {
+          this.depreciacion = DepreciacionData;
+          console.log(this.depreciacion);
         })
         .catch(err => {
           console.log(err);

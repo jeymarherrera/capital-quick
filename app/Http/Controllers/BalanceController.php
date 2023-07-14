@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Compras;
 use App\Models\Inventarios;
 use App\Models\Ventas;
+use App\Models\flujo_caja;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -59,6 +60,19 @@ class BalanceController extends Controller
         return Inventarios::sum('costo_produccion');
 
     }
+
+    public function GetEfectivoTotal()
+    {
+         $flujo = flujo_caja::select('total_F')->first();
+        if ($flujo) {
+            return $flujo->total_F;
+        } else {
+            return null;
+
+        }
+    }
+
+
 
 
 }

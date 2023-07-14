@@ -60,8 +60,17 @@ export const ObtenerPrestamosCortoPlazo = () => {
     });
   };
 
-
-
+  export const ObtenerEfectivoTotal = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("efectivoTotal/")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+  };
 
   export const ObtenerCostosOperativos = () => {
     return new Promise(async (resolve) => {

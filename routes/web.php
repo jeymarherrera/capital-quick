@@ -40,6 +40,7 @@ use App\Models\activosFijos;
 Route::get('/empresa/{eid}', [EmpresasController::class, 'GetEmpresaById']);
 
 Route::get('/ventas/{eid}', [VentasController::class, 'GetAllVentas']);
+Route::get('/ventasTotal', [VentasController::class, 'GetVentas']);
 
 Route::get('/balance/{eid}', [ComprasController::class, 'GetAllbalanceid']);
 
@@ -47,6 +48,7 @@ Route::get('/compras/all/{eid}', [ComprasController::class, 'GetAllCompras']);
 Route::get('/costos/all/{eid}', [ComprasController::class, 'GetAllCostos']);
 
 Route::get('/costosOperativos', [ComprasController::class, 'GetCostosOperativos']);
+Route::get('/efectivoTotal', [BalanceController::class, 'GetEfectivoTotal']);
 Route::get('/costosProduccion', [BalanceController::class, 'GetCostosProduccion']);
 Route::get('/depreciacion', [ActivoFijoController::class, 'GetDepreciacion']);
 

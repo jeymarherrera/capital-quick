@@ -15,4 +15,16 @@ export const ObtenerTodasventas = (id) => {
 };
 
 
+export const ObtenerVentas = () => {
+    return new Promise(async (resolve) => {
+        return ApiService.get("/ventasTotal")
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch(({ response }) => {
+                resolve(response);
+            });
+    });
+};
+
 // Actualizar Datos
