@@ -32,10 +32,11 @@
                       <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
                         <div class="form">
                           <div class="row">
-
                             <div class="col-4">
                               <div class="form-group">
-                                <label for="impuesto">Nuevo valor de impuesto (en decimal)</label>
+                                <label for="impuesto"
+                                  >Nuevo valor de impuesto (en decimal)</label
+                                >
                                 <input
                                   type="text"
                                   name=""
@@ -76,7 +77,6 @@
   </div>
 </template>
 <script>
-
 import "@/assets/sass/users/account-setting.scss";
 import * as msg from "@/helpers/mensajes";
 import * as EmpresaService from "@/services/empresas";
@@ -94,17 +94,19 @@ export default {
     obtenerEmpresa() {
       msg.toastr("Cargando datos, por favor espere...", "info");
       EmpresaService.ObtenerEmpresa(1)
-        .then(empresaData => {
+        .then((empresaData) => {
           this.empresa = empresaData;
           console.log(this.empresa);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     },
     guardarImpuesto() {
-      BalanceService
-        .GuardarImpuesto(this.empresa.id, parseFloat(this.impuesto.valor))
+      BalanceService.GuardarImpuesto(
+        this.empresa.id,
+        parseFloat(this.impuesto.valor)
+      )
         .then((res) => {
           msg.ShowMessages(res);
           if (res.status == 200) {
@@ -114,7 +116,7 @@ export default {
         })
         .catch((err) => console.log(err));
     },
-    imprimir(id){
+    imprimir(id) {
       console.log(id);
     },
     clearDatos() {
@@ -124,10 +126,7 @@ export default {
     },
   },
   mounted() {
-  
-   this.obtenerEmpresa()
-  
-}
-
+    // this.obtenerEmpresa()
+  },
 };
 </script>
