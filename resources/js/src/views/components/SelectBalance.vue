@@ -7,7 +7,7 @@
             <nav class="breadcrumb-one" aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="javascript:;">Balance General</a>
+                  <a href="javascript:;">Seleccion de Balance</a>
                 </li>
               </ol>
             </nav>
