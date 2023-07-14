@@ -96,11 +96,6 @@ const routes = [
     },
 
     {
-        path: '/impuesto/:id/editar',
-        name: 'Impuesto',
-        component: () => import(/* webpackChunkName: "components-counter" */ '../views/impuesto.vue'),
-    },
-    {
         path: '/proforma/:id/balance',
         name: 'IProforma Balance',
         component: () => import(/* webpackChunkName: "components-counter" */ '../views/proforma_balance.vue'),
