@@ -27,7 +27,7 @@
             <div class="media">
               <div class="media-aside align-self-start">
                 <div class="w-img">
-                  <img src="@/assets/images/g-8.png" alt="avatar" />
+                  <img src="@/assets/images/logo.svg" alt="avatar" />
                 </div>
               </div>
               <div class="media-body">

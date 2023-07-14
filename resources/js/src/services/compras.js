@@ -155,9 +155,11 @@ export const ObtenerRelacionF = () => {
     });
 };
 
+
+
 export const GuardarFlujoFinal = (flujo) => {
     return new Promise(async (resolve) => {
-        return ApiService.post("/totalflujo", flujo)
+        return ApiService.post("totalflujo", flujo)
             .then((response) => {
                 resolve(response);
             })
