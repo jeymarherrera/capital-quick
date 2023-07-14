@@ -135,15 +135,7 @@ export default {
         total += parseFloat(this.restaValoresT[mes.toString()]);
       }
       this.totalAnual = total.toFixed(2);
-
-      flujoService
-        .GuardarFlujoFinal(this.totalAnual)
-        .then((res) => {
-          msg.ShowMessages(res);
-          if (res.status == 200) {
-          }
-        })
-        .catch((err) => console.log(err));
+      console.log(this.totalAnual);
     },
   },
   async mounted() {

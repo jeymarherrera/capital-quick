@@ -79,7 +79,7 @@ Route::get('/proforma/PB', [ComprasController::class, 'GetProformaPB']);
 Route::get('/proforma/CB', [ComprasController::class, 'GetProformaCB']);
 Route::get('/proforma/APE', [ComprasController::class, 'GetProformaAPE']);
 
-Route::post('/totalflujo', [ComprasController::class, 'GuardarTotalflujo']);
+//Route::post('/totalflujo', [ComprasController::class, 'GuardarTotalflujo']);
 
 
 Route::post('/flujo/balance', [ComprasController::class, 'Guardarflujo']);

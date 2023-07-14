@@ -270,6 +270,7 @@ class ComprasController extends Controller
 
     public function GuardarTotalflujo(CreateTotalRequest $request)
     {
+        dd($request->totalAnual);
         flujo_caja::where('id_balance', 1)
             ->update(['total_F' => $request->totalAnual]);
     }
